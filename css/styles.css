@@ -21,14 +21,14 @@ body {
 #delete-btn {
   background: none;
   border: none;
-  background-image: url('images/delete.svg');
+  background-image: url('../images/delete.svg');
   background-repeat: no-repeat;
   width: 30px;
   margin-top: 22px;
 }
 
 #delete-btn:hover {
-  background-image: url('images/delete-hover.svg');
+  background-image: url('../images/delete-hover.svg');
 }
 
 #input-field-box {
@@ -125,7 +125,7 @@ p {
 }
 
 #save-btn:hover {
-    background: #045E55;
+  background: #045E55;
 }
 
 #search,
@@ -138,7 +138,7 @@ p {
 #upvote-btn {
   background: none;
   border: none;
-  background-image: url('images/upvote.svg');
+  background-image: url('../images/upvote.svg');
   background-repeat: no-repeat;
   width: 30px;
   margin-right: 10px;
@@ -147,13 +147,13 @@ p {
 }
 
 #upvote-btn:hover {
-  background-image: url('images/upvote-hover.svg');
+  background-image: url('../images/upvote-hover.svg');
 }
 
 #downvote-btn {
   background: none;
   border: none;
-  background-image: url('images/downvote.svg');
+  background-image: url('../images/downvote.svg');
   background-repeat: no-repeat;
   width: 30px;
   margin-right: 10px;
@@ -162,7 +162,7 @@ p {
 }
 
 #downvote-btn:hover {
-  background-image: url('images/downvote-hover.svg');
+  background-image: url('../images/downvote-hover.svg');
 }
 
 
