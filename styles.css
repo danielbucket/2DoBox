@@ -18,7 +18,7 @@ body {
   width: 100%;
 }
 
-#delete-button {
+#delete-btn {
   background: none;
   border: none;
   background-image: url('images/delete.svg');
@@ -27,11 +27,11 @@ body {
   margin-top: 22px;
 }
 
-#delete-button:hover {
+#delete-btn:hover {
   background-image: url('images/delete-hover.svg');
 }
 
-#enter-div {
+#input-field-box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,7 +113,7 @@ p {
   color: #6D6E71;
 }
 
-#save-button {
+#save-btn {
   margin-bottom: 20px;
   font-size: 20px;
   color: #FFFFFF;
@@ -124,7 +124,7 @@ p {
   height: 32px;
 }
 
-#save-button:hover {
+#save-btn:hover {
     background: #045E55;
 }
 
@@ -135,7 +135,7 @@ p {
   border: 2px solid #D1D3D4;
 }
 
-#upvote-button {
+#upvote-btn {
   background: none;
   border: none;
   background-image: url('images/upvote.svg');
@@ -146,11 +146,11 @@ p {
   margin-top: 22px;
 }
 
-#upvote-button:hover {
+#upvote-btn:hover {
   background-image: url('images/upvote-hover.svg');
 }
 
-#downvote-button {
+#downvote-btn {
   background: none;
   border: none;
   background-image: url('images/downvote.svg');
@@ -161,7 +161,7 @@ p {
   margin-top: 22px;
 }
 
-#downvote-button:hover {
+#downvote-btn:hover {
   background-image: url('images/downvote-hover.svg');
 }
 
