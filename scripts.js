@@ -9,7 +9,7 @@ function prependCard($id, $ideaTitle, $ideaContent, $quality) {
   $('#display-side').prepend(
     `<div class='idea-card' id=${$id}>
       <div class='title-line'>
-        <div  id='line-1'>
+        <div id='line-1'>
           <h2 class='titleEdit' contenteditable='true'>${$ideaTitle}</h2>
           <button id='delete-button'>
           </button>
