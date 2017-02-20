@@ -26,7 +26,7 @@ function createCards(driver) {
     driver.findElement(By.id('idea-content')).sendKeys('New Body')
     driver.findElement(By.id('save-button')).click()
 
-
+//
     driver.sleep(3000).then(function() {
       driver.findElement(By.className('titleEdit')).getText().then(function(title) {
           if (title === 'New Title') {
