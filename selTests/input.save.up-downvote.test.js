@@ -26,6 +26,10 @@ downVoteTest(driver_fx)
 downVoteTest(driver_chr)
 // downVoteTest(driver_saf)
 
+filterTest(driver_fx)
+filterTest(driver_chr)
+// filterTest(driver_saf)
+
 function newCardTest(driver) {
   driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
   driver.findElement(By.id('idea-title')).sendKeys('Test Pass One - Title')
@@ -41,7 +45,7 @@ function newCardTest(driver) {
       }
     })
   })
-  
+
   driver.sleep(2000).then(function() {
     driver.findElement(By.id('line-2')).getText().then(function(titleContent){
       if (titleContent === 'Test Pass One - Body') {
@@ -99,5 +103,23 @@ function downVoteTest(driver) {
       }
     })
   })
+}
+
+function filterTest(driver) {
+  driver.findElement(By.id('idea-title')).sendKeys('Find Me 0123')
+  driver.findElement(By.id('idea-content')).sendKeys('3210 eM dniF')
+  driver.findElement(By.id('save-button')).click()
+  driver.findElement(By.id('search')).sendKeys('eM d')
+
+  driver.sleep(2000).then(function() {
+    driver.findElement(By.id('line-2')).getText().then(function(search) {
+      if (search === '3210 eM dniF') {
+        console.log('filterTest Passed')
+      } else {
+        console.log('filterTest Failed');
+      }
+    })
+  })
+
   driver.quit()
 }
