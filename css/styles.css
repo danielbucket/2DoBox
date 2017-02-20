@@ -31,6 +31,10 @@ body {
   background-image: url('../images/delete-hover.svg');
 }
 
+#delete-btn:focus {
+  outline: none;
+}
+
 #input-field-box {
   display: flex;
   flex-direction: column;
@@ -150,6 +154,10 @@ p {
   background-image: url('../images/upvote-hover.svg');
 }
 
+#upvote-btn:focus {
+  outline: none;
+}
+
 #downvote-btn {
   background: none;
   border: none;
@@ -165,6 +173,9 @@ p {
   background-image: url('../images/downvote-hover.svg');
 }
 
+#downvote-btn:focus {
+  outline: none;
+}
 
 @media screen and (min-width: 600px) {
   #input-side {
