@@ -72,7 +72,6 @@ h2 {
   height: 32px;
   font-size: 24px;
   border: 2px solid #D1D3D4;
-
 }
 
 #input-side {
@@ -113,7 +112,7 @@ p {
   margin: 0;
 }
 
-#quality-line {
+#rating-line {
   color: #6D6E71;
 }
 
