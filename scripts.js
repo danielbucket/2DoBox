@@ -11,15 +11,15 @@ function prependCard($id, $ideaTitle, $ideaContent, quality) {
       <div class='title-line'>
         <div id='line-1'>
           <h2 class='title-edit' contenteditable='true'>${$ideaTitle}</h2>
-          <button id='delete-button'>
+          <button id='delete-btn'>
           </button>
         </div>
         <p id='line-2' contenteditable='true'>${$ideaContent}</p>
       </div>
       <div id='line-3'>
-        <button id='upvote-button'>
+        <button id='upvote-btn'>
         </button>
-        <button id='downvote-button'>
+        <button id='downvote-btn'>
         </button>
         <p id='quality-line'>quality:  <span id="qual">${quality}</span></p>
       </div>
@@ -39,7 +39,7 @@ $(document).ready(function() {
   }
 })
 
-$('#save-button').on('click', function() {
+$('#save-btn').on('click', function() {
   var ideaTitle = $('#item-title').val()
   var ideaContent = $('#item-content').val()
   var id = $.now()
@@ -51,7 +51,7 @@ $('#save-button').on('click', function() {
   $('#item-content').val('')
 })
 
-$('#card-box').on('click', '#upvote-button', function() {
+$('#card-box').on('click', '#upvote-btn', function() {
   var qualityText = $(this).siblings('#quality-line').children()
   if (qualityText.text() === 'swill') {
     qualityText.text('plausible')
@@ -65,7 +65,7 @@ $('#card-box').on('click', '#upvote-button', function() {
   localStorage.setItem(idValue, JSON.stringify(lsItem))
 })
 
-$('#card-box').on('click', '#downvote-button', function() {
+$('#card-box').on('click', '#downvote-btn', function() {
   var qualityText = $(this).siblings('#quality-line').children()
   if (qualityText.text() === 'genius') {
     qualityText.text('plausible')
@@ -80,7 +80,7 @@ $('#card-box').on('click', '#downvote-button', function() {
   localStorage.setItem(idValue, JSON.stringify(lsItem))
 })
 
-$('#card-box').on('click', '#delete-button', function() {
+$('#card-box').on('click', '#delete-btn', function() {
   var $whatIsDeleted = $(this).closest('.idea-card')
   $whatIsDeleted.remove()
   var idValue = $whatIsDeleted.attr('id')
@@ -125,8 +125,8 @@ $('#item-title, #item-content').on('keyup', function() {
   var $ideaTitle = $('#idea-title')
   var $ideaContent = $('#item-content')
   if ($ideaTitle.val() !== "" && $ideaContent.val() !== ""){
-    $('#save-button').prop('disabled', false)
+    $('#save-btn').prop('disabled', false)
   } else {
-    $('#save-button').prop('disabled', true)
+    $('#save-btn').prop('disabled', true)
   }
 })
