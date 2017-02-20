@@ -47,9 +47,9 @@ function newCardTest(driver) {
   driver.sleep(2000).then(function() {
     driver.findElement(By.className('titleEdit')).getText().then(function(titleBody) {
       if (titleBody === 'Test Pass One - Title') {
-        console.log('Title Content Population Test Passed')
+        console.log('newCardTest, New Card Title Population, TEST PASSED')
       } else {
-        console.log('Title Content Population Test Failed')
+        console.log('newCardTest, New Card Title Population, TEST FAILED')
       }
     })
   })
@@ -57,9 +57,9 @@ function newCardTest(driver) {
   driver.sleep(2000).then(function() {
     driver.findElement(By.id('line-2')).getText().then(function(titleContent){
       if (titleContent === 'Test Pass One - Body') {
-        console.log('Card Content Population Test Passed')
+        console.log('newCardTest, New Card Body Population, TEST PASSED')
       } else {
-        console.log('Card Content Population Test Failed')
+        console.log('newCardTest, New Card Body Population, TEST FAILED')
       }
     })
   })
@@ -70,9 +70,9 @@ function upVoteTest(driver) {
   driver.sleep(2000).then(function() {
     driver.findElement(By.id('qual')).getText().then(function(quality) {
       if (quality === 'plausible') {
-        console.log('Upvote To Plausible Test Passed')
+        console.log('upVoteTest, Up Vote To "Plausible", TEST PASSED')
       } else {
-        console.log('Upvote To Plausible Test Failed')
+        console.log('upVoteTest, Up Vote To "Plausible", TEST FAILED')
       }
     })
   })
@@ -81,9 +81,9 @@ function upVoteTest(driver) {
   driver.sleep(2000).then(function() {
     driver.findElement(By.id('qual')).getText().then(function(quality) {
       if (quality === 'genius') {
-        console.log('Upvote To Genius Test Passed')
+        console.log('upVoteTest, Up Vote To "Genius", TEST PASSED')
       } else {
-        console.log('Upvote To Genius Test Failed')
+        console.log('upVoteTest, Up Vote To "Genius", TEST FAILED')
       }
     })
   })
@@ -94,9 +94,9 @@ function downVoteTest(driver) {
   driver.sleep(2000).then(function() {
     driver.findElement(By.id('qual')).getText().then(function(quality) {
       if (quality === 'plausible') {
-        console.log('Downvote To Plausible Test Passed')
+        console.log('downVoteTest, Vote Down To "Plausible", TEST PASSED')
       } else {
-        console.log('Downvote to Plausible Test Failed')
+        console.log('downVoteTest, Vote Down To "Plausible", TEST FAILED')
       }
     })
   })
@@ -105,9 +105,9 @@ function downVoteTest(driver) {
   driver.sleep(2000).then(function() {
     driver.findElement(By.id('qual')).getText().then(function(quality) {
       if (quality === 'swill') {
-        console.log('Downvote To Swill Test Passed')
+        console.log('downVoteTest, Vote Down To "Swill", TEST PASSED')
       } else {
-        console.log('Downvote to Swill Test Failed')
+        console.log('downVoteTest, Vote Down To "Swill", TEST FAILED')
       }
     })
   })
@@ -122,13 +122,14 @@ function filterTest(driver) {
   driver.sleep(2000).then(function() {
     driver.findElement(By.id('line-2')).getText().then(function(search) {
       if (search === '3210 eM dniF') {
-        console.log('filterTest Passed')
+        console.log('filterTest, TEST PASSED')
       } else {
-        console.log('filterTest Failed');
+        console.log('filterTest, TEST FAILED')
       }
     })
   })
 }
+
 function editIdeas(driver){
   driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
   driver.findElement(By.id('idea-title')).sendKeys(' ')
@@ -136,29 +137,29 @@ function editIdeas(driver){
   driver.findElement(By.id('save-button')).click()
   driver.findElement(By.className('titleEdit')).sendKeys('The perfect title')
 
-  driver.sleep(3000).then( function(){
+  driver.sleep(2000).then( function(){
     driver.findElement(By.className('titleEdit')).getText().then( function(text){
       if (text == 'The perfect title'){
-        console.log('Existing idea changed, test passed.');
+        console.log('editIdeas, TEST PASSED')
       } else {
-        console.log('Idea not changed, test failed');
+        console.log('editIdea, TEST FAILED')
       }
     })
   })
 }
 
 function createCards(driver) {
-
   driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
   driver.findElement(By.id('idea-title')).sendKeys('New Title')
   driver.findElement(By.id('idea-content')).sendKeys('New Body')
   driver.findElement(By.id('save-button')).click()
-  driver.sleep(3000).then(function() {
+
+  driver.sleep(2000).then(function() {
     driver.findElement(By.className('titleEdit')).getText().then(function(title) {
         if (title === 'New Title') {
-        console.log('Card Exists.');
+        console.log('createCards, 1st New Card Verification, TEST PASSED')
       } else {
-        console.log('Card does not exist.')
+        console.log('createCards, 1st New Card Verification, TEST FAILED')
       }
     })
   })
@@ -166,23 +167,24 @@ function createCards(driver) {
   driver.findElement(By.id('idea-title')).sendKeys('Second New Title')
   driver.findElement(By.id('idea-content')).sendKeys('Second New Body')
   driver.findElement(By.id('save-button')).click()
-  driver.sleep(3000).then(function() {
+
+  driver.sleep(2000).then(function() {
     driver.findElement(By.className('titleEdit')).getText().then(function(title) {
         if (title === 'Second New Title') {
-        console.log('Card 2 Exists.');
+        console.log('createCards, 2nd New Card Verification, TEST PASSED')
       } else {
-        console.log('Card does not exist.')
+        console.log('createCards, 2nd New Card Verification, TEST FAILED')
       }
     })
   })
 
   driver.findElement(By.id('delete-button')).click()
-  driver.sleep(3000).then(function(){
+  driver.sleep(2000).then(function(){
     driver.findElement(By.className('titleEdit')).getText().then(function(title) {
       if (title === 'New Title') {
-        console.log('test passed, card deleted');
+        console.log('createCards, 1st Card Deleted, TEST PASSED')
       } else {
-        console.log('test failed, card not deleted.')
+        console.log('createCards, 1st Card Deleted, TEST FAILED')
       }
     })
   })
