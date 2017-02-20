@@ -38,6 +38,10 @@ createCards(driver_fx)
 createCards(driver_chr)
 // createCards(driver_saf)
 
+refreshTest(driver_fx)
+refreshTest(driver_chr)
+// refreshTest(driver_saf)
+
 function newCardTest(driver) {
   driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
   driver.findElement(By.id('idea-title')).sendKeys('Test Pass One - Title')
@@ -188,6 +192,23 @@ function createCards(driver) {
       }
     })
   })
+}
 
+function refreshTest(driver) {
+  driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
+  driver.findElement(By.id('idea-title')).sendKeys('First New Idea.')
+  driver.findElement(By.id('idea-content')).sendKeys('First New Idea Body.')
+  driver.findElement(By.id('save-button')).click()
+  driver.navigate().refresh()
+
+  driver.sleep(3000).then(function() {
+    driver.findElement(By.className('titleEdit')).getText().then(function (title) {
+      if (title === "First New Idea." ) {
+        console.log('refreshTest, Data persisted, TEST PASSED');
+      } else {
+        console.log('refreshTest, Data lost, TEST FAILED');
+      }
+    })
+  })
   driver.quit()
 }
