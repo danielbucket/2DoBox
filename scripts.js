@@ -10,7 +10,7 @@ function prependCard($id, $ideaTitle, $ideaContent, $quality) {
     `<div class='idea-card' id=${$id}>
       <div class='title-line'>
         <div id='line-1'>
-          <h2 class='titleEdit' contenteditable='true'>${$ideaTitle}</h2>
+          <h2 class='title-edit' contenteditable='true'>${$ideaTitle}</h2>
           <button id='delete-button'>
           </button>
         </div>
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
 $('#save-button').on('click', function() {
   var $ideaTitle = $('#idea-title').val();
-  var $ideaContent = $('#idea-content').val();
+  var $ideaContent = $('#item-content').val();
   var $id = $.now();
   var $quality = 'swill';
   var newIdea = new Idea($id, $ideaTitle, $ideaContent);
@@ -48,7 +48,7 @@ $('#save-button').on('click', function() {
   localStorage.setItem($id, stringifiedIdea);
   prependCard($id, $ideaTitle, $ideaContent, $quality);
   $('#idea-title').val('');
-  $('#idea-content').val('');
+  $('#item-content').val('');
 });
 
 $('#display-side').on('click', '#upvote-button', function () {
@@ -92,7 +92,7 @@ $('#display-side').on('click', '#delete-button', function() {
   localStorage.removeItem(idValue);
 });
 
-$('#display-side').on('blur', '.titleEdit', function () {
+$('#display-side').on('blur', '.title-edit', function () {
   var $ideaTitle = $(this).text();
   var $whatIsGrabbed = $(this).closest('.idea-card');
   var idValue = $whatIsGrabbed.attr('id');
@@ -126,9 +126,9 @@ $('#search').on('keyup', function() {
     });
 });
 
-$('#idea-title, #idea-content').on('keyup', function () {
+$('#idea-title, #item-content').on('keyup', function () {
   var $ideaTitle = $('#idea-title');
-  var $ideaContent = $('#idea-content');
+  var $ideaContent = $('#item-content');
   if ($ideaTitle.val() !== "" && $ideaContent.val() !== ""){
     $('#save-button').prop('disabled', false);
   } else {
