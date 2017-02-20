@@ -30,6 +30,14 @@ filterTest(driver_fx)
 filterTest(driver_chr)
 // filterTest(driver_saf)
 
+editIdeas(driver_fx)
+editIdeas(driver_chr)
+// editIdeas(driver_saf)
+
+createCards(driver_fx)
+createCards(driver_chr)
+// createCards(driver_saf)
+
 function newCardTest(driver) {
   driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
   driver.findElement(By.id('idea-title')).sendKeys('Test Pass One - Title')
@@ -117,6 +125,64 @@ function filterTest(driver) {
         console.log('filterTest Passed')
       } else {
         console.log('filterTest Failed');
+      }
+    })
+  })
+}
+function editIdeas(driver){
+  driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
+  driver.findElement(By.id('idea-title')).sendKeys(' ')
+  driver.findElement(By.id('idea-content')).sendKeys('Not quite right content')
+  driver.findElement(By.id('save-button')).click()
+  driver.findElement(By.className('titleEdit')).sendKeys('The perfect title')
+
+  driver.sleep(3000).then( function(){
+    driver.findElement(By.className('titleEdit')).getText().then( function(text){
+      if (text == 'The perfect title'){
+        console.log('Existing idea changed, test passed.');
+      } else {
+        console.log('Idea not changed, test failed');
+      }
+    })
+  })
+}
+
+function createCards(driver) {
+
+  driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
+  driver.findElement(By.id('idea-title')).sendKeys('New Title')
+  driver.findElement(By.id('idea-content')).sendKeys('New Body')
+  driver.findElement(By.id('save-button')).click()
+  driver.sleep(3000).then(function() {
+    driver.findElement(By.className('titleEdit')).getText().then(function(title) {
+        if (title === 'New Title') {
+        console.log('Card Exists.');
+      } else {
+        console.log('Card does not exist.')
+      }
+    })
+  })
+
+  driver.findElement(By.id('idea-title')).sendKeys('Second New Title')
+  driver.findElement(By.id('idea-content')).sendKeys('Second New Body')
+  driver.findElement(By.id('save-button')).click()
+  driver.sleep(3000).then(function() {
+    driver.findElement(By.className('titleEdit')).getText().then(function(title) {
+        if (title === 'Second New Title') {
+        console.log('Card 2 Exists.');
+      } else {
+        console.log('Card does not exist.')
+      }
+    })
+  })
+
+  driver.findElement(By.id('delete-button')).click()
+  driver.sleep(3000).then(function(){
+    driver.findElement(By.className('titleEdit')).getText().then(function(title) {
+      if (title === 'New Title') {
+        console.log('test passed, card deleted');
+      } else {
+        console.log('test failed, card not deleted.')
       }
     })
   })
