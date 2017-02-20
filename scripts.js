@@ -21,7 +21,7 @@ function prependCard($id, $ideaTitle, $ideaContent, quality) {
         </button>
         <button id='downvote-btn'>
         </button>
-        <p id='quality-line'>quality:  <span id="qual">${quality}</span></p>
+        <p id='quality-line'>importance: <span id="qual">${quality}</span></p>
       </div>
      </div>`
    )
