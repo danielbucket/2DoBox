@@ -1,8 +1,8 @@
 function Idea(id, title, body, quality="swill") {
-  this.id = id;
-  this.title = title;
-  this.body = body;
-  this.quality = quality;
+  this.id = id
+  this.title = title
+  this.body = body
+  this.quality = quality
 }
 
 function prependCard($id, $ideaTitle, $ideaContent, $quality) {
@@ -23,115 +23,115 @@ function prependCard($id, $ideaTitle, $ideaContent, $quality) {
         </button>
         <p id='quality-line'>quality:  <span id="qual">${$quality}</span></p>
       </div>
-     </div>`);
+     </div>`)
 }
 
 $(document).ready(function () {
   for(var i=0;i<localStorage.length;i++) {
-      var obj = localStorage.getItem(localStorage.key(i));
-      var parsedobj = JSON.parse(obj);
-      var $ideaTitle = parsedobj.title;
-      var $ideaContent = parsedobj.body;
-      var $id = parsedobj.id;
-      var $quality = parsedobj.quality;
-      prependCard($id, $ideaTitle, $ideaContent, $quality);
+    var obj = localStorage.getItem(localStorage.key(i))
+    var parsedobj = JSON.parse(obj)
+    var $ideaTitle = parsedobj.title
+    var $ideaContent = parsedobj.body
+    var $id = parsedobj.id
+    var $quality = parsedobj.quality
+    prependCard($id, $ideaTitle, $ideaContent, $quality)
   }
-});
+})
 
 $('#save-button').on('click', function() {
-  var $ideaTitle = $('#idea-title').val();
-  var $ideaContent = $('#item-content').val();
-  var $id = $.now();
-  var $quality = 'swill';
-  var newIdea = new Idea($id, $ideaTitle, $ideaContent);
-  var stringifiedIdea = JSON.stringify(newIdea);
-  localStorage.setItem($id, stringifiedIdea);
-  prependCard($id, $ideaTitle, $ideaContent, $quality);
-  $('#idea-title').val('');
-  $('#item-content').val('');
+  var $ideaTitle = $('#item-title').val()
+  var $ideaContent = $('#item-content').val()
+  var $id = $.now()
+  var $quality = 'swill'
+  var newIdea = new Idea($id, $ideaTitle, $ideaContent)
+  var stringifiedIdea = JSON.stringify(newIdea)
+  localStorage.setItem($id, stringifiedIdea)
+  prependCard($id, $ideaTitle, $ideaContent, $quality)
+  $('#idea-title').val('')
+  $('#item-content').val('')
 });
 
 $('#display-side').on('click', '#upvote-button', function () {
-  var $qualityText = $(this).siblings('#quality-line').children();
+  var $qualityText = $(this).siblings('#quality-line').children()
   if ($qualityText.text() === 'swill') {
-    $qualityText.text('plausible');
+    $qualityText.text('plausible')
   } else if ($qualityText.text() === 'plausible') {
-    $qualityText.text('genius');
+    $qualityText.text('genius')
   }
-  var $whatIsGrabbed = $(this).closest('.idea-card');
-  var idValue = $whatIsGrabbed.attr('id');
-  var lsitem = localStorage.getItem(idValue);
-  var parselsitem = JSON.parse(lsitem);
+  var $whatIsGrabbed = $(this).closest('.idea-card')
+  var idValue = $whatIsGrabbed.attr('id')
+  var lsitem = localStorage.getItem(idValue)
+  var parselsitem = JSON.parse(lsitem)
   var $quality = $qualityText.text();
-  parselsitem.quality = $quality;
-  var stringedit = JSON.stringify(parselsitem);
-  localStorage.setItem(idValue, stringedit);
+  parselsitem.quality = $quality
+  var stringedit = JSON.stringify(parselsitem)
+  localStorage.setItem(idValue, stringedit)
 });
 
 $('#display-side').on('click', '#downvote-button', function () {
-  var $qualityText = $(this).siblings('#quality-line').children();
+  var $qualityText = $(this).siblings('#quality-line').children()
   if ($qualityText.text() === 'genius') {
-    $qualityText.text('plausible');
+    $qualityText.text('plausible')
   } else if ($qualityText.text() === 'plausible') {
-    $qualityText.text('swill');
+    $qualityText.text('swill')
   }
-  var $whatIsGrabbed = $(this).closest('.idea-card');
-  var idValue = $whatIsGrabbed.attr('id');
-  var lsitem = localStorage.getItem(idValue);
-  var parselsitem = JSON.parse(lsitem);
-  var $quality = $qualityText.text();
-  parselsitem.quality = $quality;
-  var stringedit = JSON.stringify(parselsitem);
-  localStorage.setItem(idValue, stringedit);
+  var $whatIsGrabbed = $(this).closest('.idea-card')
+  var idValue = $whatIsGrabbed.attr('id')
+  var lsitem = localStorage.getItem(idValue)
+  var parselsitem = JSON.parse(lsitem)
+  var $quality = $qualityText.text()
+  parselsitem.quality = $quality
+  var stringedit = JSON.stringify(parselsitem)
+  localStorage.setItem(idValue, stringedit)
 });
 
 $('#display-side').on('click', '#delete-button', function() {
-  var $whatIsDeleted = $(this).closest('.idea-card');
-  $whatIsDeleted.remove();
-  var idValue = $whatIsDeleted.attr('id');
-  localStorage.removeItem(idValue);
+  var $whatIsDeleted = $(this).closest('.idea-card')
+  $whatIsDeleted.remove()
+  var idValue = $whatIsDeleted.attr('id')
+  localStorage.removeItem(idValue)
 });
 
 $('#display-side').on('blur', '.title-edit', function () {
-  var $ideaTitle = $(this).text();
-  var $whatIsGrabbed = $(this).closest('.idea-card');
-  var idValue = $whatIsGrabbed.attr('id');
-  var lsitem = localStorage.getItem(idValue);
-  var parselsitem = JSON.parse(lsitem);
-  parselsitem.title = $ideaTitle;
-  var stringedit = JSON.stringify(parselsitem);
-  localStorage.setItem(idValue, stringedit);
+  var $ideaTitle = $(this).text()
+  var $whatIsGrabbed = $(this).closest('.idea-card')
+  var idValue = $whatIsGrabbed.attr('id')
+  var lsitem = localStorage.getItem(idValue)
+  var parselsitem = JSON.parse(lsitem)
+  parselsitem.title = $ideaTitle
+  var stringedit = JSON.stringify(parselsitem)
+  localStorage.setItem(idValue, stringedit)
 });
 
 $('#display-side').on('blur', '#line-2', function () {
-  var $ideaContent = $(this).text();
-  var $whatIsGrabbed = $(this).closest('.idea-card');
-  var idValue = $whatIsGrabbed.attr('id');
-  var lsitem = localStorage.getItem(idValue);
-  var parselsitem = JSON.parse(lsitem);
-  parselsitem.body = $ideaContent;
-  var stringedit = JSON.stringify(parselsitem);
-  localStorage.setItem(idValue, stringedit);
+  var $ideaContent = $(this).text()
+  var $whatIsGrabbed = $(this).closest('.idea-card')
+  var idValue = $whatIsGrabbed.attr('id')
+  var lsitem = localStorage.getItem(idValue)
+  var parselsitem = JSON.parse(lsitem)
+  parselsitem.body = $ideaContent
+  var stringedit = JSON.stringify(parselsitem)
+  localStorage.setItem(idValue, stringedit)
 });
 
 $('#search').on('keyup', function() {
     var searchInput = $(this).val().toLowerCase();
     $('.title-line').each(function() {
-      var searchText = $(this).text().toLowerCase();
+      var searchText = $(this).text().toLowerCase()
       if (!!searchText.match(searchInput)) {
-        $(this).closest('.idea-card').toggle(true);
-      }else {
-        $(this).closest('.idea-card').toggle(false);
+        $(this).closest('.idea-card').toggle(true)
+      } else {
+        $(this).closest('.idea-card').toggle(false)
       }
-    });
-});
+    })
+})
 
-$('#idea-title, #item-content').on('keyup', function () {
-  var $ideaTitle = $('#idea-title');
-  var $ideaContent = $('#item-content');
+$('#item-title, #item-content').on('keyup', function () {
+  var $ideaTitle = $('#idea-title')
+  var $ideaContent = $('#item-content')
   if ($ideaTitle.val() !== "" && $ideaContent.val() !== ""){
-    $('#save-button').prop('disabled', false);
+    $('#save-button').prop('disabled', false)
   } else {
-    $('#save-button').prop('disabled', true);
+    $('#save-button').prop('disabled', true)
   }
 })
