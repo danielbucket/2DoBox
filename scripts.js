@@ -53,11 +53,23 @@ $('#save-btn').on('click', function() {
 
 $('#card-box').on('click', '#upvote-btn', function() {
   var ratingText = $(this).siblings('#rating-line').children()
-  if (ratingText.text() === 'normal') {
-    ratingText.text('high')
-  } else if (ratingText.text() === 'high') {
-    ratingText.text('critical')
-  }
+    switch(ratingText.text()) {
+      case 'critical':
+      ratingText.text('critical');
+      break;
+      case 'high':
+      ratingText.text('critical');
+      break;
+      case 'normal':
+      ratingText.text('high');
+      break;
+      case 'low':
+      ratingText.text('normal');
+      break;
+      case 'none':
+      ratingText.text('low');
+      break;
+    }
   var thisCardObj = $(this).closest('.idea-card')
   var idValue = thisCardObj.attr('id')
   var lsItem = JSON.parse(localStorage.getItem(idValue))
@@ -67,12 +79,23 @@ $('#card-box').on('click', '#upvote-btn', function() {
 
 $('#card-box').on('click', '#downvote-btn', function() {
   var ratingText = $(this).siblings('#rating-line').children()
-  if (ratingText.text() === 'critical') {
-    ratingText.text('high')
-  } else if (ratingText.text() === 'high') {
-    ratingText.text('normal')
+  switch(ratingText.text()) {
+    case 'critical':
+    ratingText.text('high');
+    break;
+    case 'high':
+    ratingText.text('normal');
+    break;
+    case 'normal':
+    ratingText.text('low');
+    break;
+    case 'low':
+    ratingText.text('none');
+    break;
+    case 'none':
+    ratingText.text('none');
+    break;
   }
-
   var thisCardObj = $(this).closest('.idea-card')
   var idValue = thisCardObj.attr('id')
   var lsItem = JSON.parse(localStorage.getItem(idValue))
