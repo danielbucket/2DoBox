@@ -8,7 +8,7 @@ function Idea(id, title, body, rating, complete) {
 
 function prependCard(i) {
   $('#card-box').prepend(
-    `<article class='idea-card ${i.complete}' id="${i.id}">
+    `<article class='item-card ${i.complete}' id="${i.id}">
       <section class='title-line'>
         <div id='line-1'>
           <h2 class='title-edit' contenteditable>${i.title}</h2>
@@ -61,7 +61,7 @@ $('#card-box').on('click', '#upvote-btn', function() {
       case 'low': ratingText.text('normal'); break
       case 'none': ratingText.text('low'); break
     }
-  var thisCard = JSON.parse(localStorage.getItem($(this).closest('.idea-card').attr('id')))
+  var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.rating = ratingText.text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
 })
@@ -76,14 +76,14 @@ $('#card-box').on('click', '#downvote-btn', function() {
     case 'low': ratingText.text('none'); break
     case 'none': ratingText.text('none'); break
   }
-  var thisCard = JSON.parse(localStorage.getItem($(this).closest('.idea-card').attr('id')))
+  var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.rating = ratingText.text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
 })
 
 //task complete button
 $('#card-box').on('click', '#complete-btn', function() {
-  var thisCard = JSON.parse(localStorage.getItem($(this).closest('.idea-card').attr('id')))
+  var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   switch(thisCard.complete) {
     case 'notComplete': thisCard.complete = 'complete'; break
     case 'complete': thisCard.complete = 'notComplete'; break
@@ -94,20 +94,20 @@ $('#card-box').on('click', '#complete-btn', function() {
 
 //delete button
 $('#card-box').on('click', '#delete-btn', function() {
-  localStorage.removeItem($(this).closest('.idea-card').attr('id'))
+  localStorage.removeItem($(this).closest('.item-card').attr('id'))
   printCard()
 })
 
 //content editable title
 $('#card-box').on('blur', '.title-edit', function() {
-  var parseItem = JSON.parse(localStorage.getItem($(this).closest('.idea-card').attr('id')))
+  var parseItem = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   parseItem.title = $(this).text()
   localStorage.setItem(parseItem.id,JSON.stringify(parseItem))
 })
 
 //content editable body
 $('#card-box').on('blur', '#line-2', function() {
-  var thisCard = JSON.parse(localStorage.getItem($(this).closest('.idea-card').attr('id')))
+  var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.body = $(this).text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
 })
@@ -118,18 +118,18 @@ $('#search').on('keyup', function() {
   $('.title-line').each(function() {
     var searchText = $(this).text().toLowerCase()
     if (!!searchText.match(searchInput)) {
-      $(this).closest('.idea-card').toggle(true)
+      $(this).closest('.item-card').toggle(true)
     } else {
-      $(this).closest('.idea-card').toggle(false)
+      $(this).closest('.item-card').toggle(false)
     }
   })
 })
 
-//activate function
+//disable button function
 $('#item-title, #item-content').on('keyup', function() {
-  var ideaTitle = $('#idea-title').val()
-  var ideaContent = $('#item-content').val()
-  if (ideaTitle !== "" && ideaContent !== ""){
+  var itemTitle = $('#item-title').val()
+  var itemContent = $('#item-content').val()
+  if (itemTitle !== "" && itemContent !== ""){
     $('#save-btn').prop('disabled', false)
   } else {
     $('#save-btn').prop('disabled', true)

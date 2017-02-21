@@ -51,7 +51,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.idea-card {
+.item-card {
   margin: 0 auto;
   width: 90%;
 }
@@ -153,8 +153,7 @@ p {
   background: #045E55;
 }
 
-#search,
-#idea-title {
+#search {
   font-size: 24px;
   letter-spacing: 1px;
   border: 2px solid #D1D3D4;
@@ -217,14 +216,7 @@ p {
     font-size: 70px;
   }
 
-  #idea-content {
-    min-height: 0;
-    max-height: 26px;
-    max-width: 50%;
-    min-width: 50%;
-  }
-
-  .idea-card {
+  .item-card {
     margin:0 auto;
     width: 50%;
   }
