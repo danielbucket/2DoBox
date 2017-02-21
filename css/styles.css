@@ -18,13 +18,24 @@ body {
   width: 100%;
 }
 
-#delete-btn {
+.status-btn-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-btn {
   background: none;
   border: none;
+  width: 30px;
+  height: 30px;
+  margin: 10px 0 0 0;
+}
+
+#delete-btn {
   background-image: url('../images/delete.svg');
   background-repeat: no-repeat;
-  width: 30px;
-  margin-top: 22px;
 }
 
 #delete-btn:hover {
@@ -33,6 +44,22 @@ body {
 
 #delete-btn:focus {
   outline: none;
+}
+
+#complete-btn {
+  background-image: url('../images/interface.svg');
+  background-repeat: no-repeat;
+}
+
+.idea-card {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.complete {
+  background-image: url('../images/black-x.png');
+  background-size: 100% 100%;
+  z-index: 10;
 }
 
 #input-field-box {
@@ -52,11 +79,6 @@ h1{
 h2 {
   max-width: 80%;
   color: #6D6E71;
-}
-
-.idea-card {
-  margin: 0 auto;
-  width: 90%;
 }
 
 #item-content {

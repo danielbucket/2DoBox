@@ -1,20 +1,23 @@
-function Idea(id, title, body, rating) {
+function Idea(id, title, body, rating, complete) {
   this.id = id
   this.title = title
   this.body = body
   this.rating = rating
+  this.complete = complete
 }
 
-function prependCard($id, $ideaTitle, $ideaContent, rating) {
+function prependCard($id, $ideaTitle, $ideaContent, rating, complete) {
   $('#card-box').prepend(
-    `<div class='idea-card' id=${$id}>
+    `<div class='idea-card ${complete}' id="${$id}">
       <div class='title-line'>
         <div id='line-1'>
-          <h2 class='title-edit' contenteditable='true'>${$ideaTitle}</h2>
-          <button id='delete-btn'>
-          </button>
+          <h2 class='title-edit' contenteditable>${$ideaTitle}</h2>
+        <div class="status-btn-box">
+          <button id='complete-btn' class="status-btn" type="button" name="complete button"></button>
+          <button id='delete-btn' class="status-btn" type="button" name="delete button"></button>
         </div>
-        <p id='line-2' contenteditable='true'>${$ideaContent}</p>
+        </div>
+        <p id='line-2' contenteditable>${$ideaContent}</p>
       </div>
       <div id='line-3'>
         <button id='upvote-btn'>
@@ -23,30 +26,32 @@ function prependCard($id, $ideaTitle, $ideaContent, rating) {
         </button>
         <p id='rating-line'>importance: <span id="qual">${rating}</span></p>
       </div>
-     </div>`
+    </div>`
    )
 }
 
-$(document).ready(function() {
-  for(var i=0;i<localStorage.length;i++) {
+function printCard() {
+  for (var i=0;i<localStorage.length;i++) {
     var obj = localStorage.getItem(localStorage.key(i))
     var parsedObj = JSON.parse(obj)
     var $ideaTitle = parsedObj.title
     var $ideaContent = parsedObj.body
     var $id = parsedObj.id
     var rating = parsedObj.rating
-    prependCard($id, $ideaTitle, $ideaContent, rating)
+    var complete = parsedObj.complete
+    prependCard($id, $ideaTitle, $ideaContent, rating, complete)
   }
-})
+}
 
 $('#save-btn').on('click', function() {
+  var id = $.now()
   var ideaTitle = $('#item-title').val()
   var ideaContent = $('#item-content').val()
-  var id = $.now()
   var rating = 'normal'
-  var newIdea = new Idea(id,ideaTitle,ideaContent)
+  var complete = "notComplete"
+  var newIdea = new Idea(id,ideaTitle,ideaContent,rating,complete)
   localStorage.setItem(id, JSON.stringify(newIdea))
-  prependCard(id,ideaTitle,ideaContent,rating)
+  prependCard(id,ideaTitle,ideaContent,rating,complete)
   $('#item-title').val('')
   $('#item-content').val('')
 })
@@ -103,6 +108,20 @@ $('#card-box').on('click', '#downvote-btn', function() {
   localStorage.setItem(idValue, JSON.stringify(lsItem))
 })
 
+$('#card-box').on('click', '#complete-btn', function() {
+  var completeTask = $(this).closest('.idea-card')
+  var thisCardId = completeTask.attr('id')
+  var thisCard = JSON.parse(localStorage.getItem(thisCardId))
+  if (thisCard.complete === "notComplete") {
+    thisCard.complete = 'complete'
+  } else if (thisCard.complete === 'complete') {
+    thisCard.complete = "notComplete"
+  }
+  localStorage.setItem(thisCardId,JSON.stringify(thisCard))
+  printCard()
+  }
+)
+
 $('#card-box').on('click', '#delete-btn', function() {
   var $whatIsDeleted = $(this).closest('.idea-card')
   $whatIsDeleted.remove()
@@ -153,3 +172,5 @@ $('#item-title, #item-content').on('keyup', function() {
     $('#save-btn').prop('disabled', true)
   }
 })
+
+printCard()
