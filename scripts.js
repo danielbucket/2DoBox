@@ -1,11 +1,11 @@
-function Idea(id, title, body, quality) {
+function Idea(id, title, body, rating) {
   this.id = id
   this.title = title
   this.body = body
-  this.quality = quality
+  this.rating = rating
 }
 
-function prependCard($id, $ideaTitle, $ideaContent, quality) {
+function prependCard($id, $ideaTitle, $ideaContent, rating) {
   $('#card-box').prepend(
     `<div class='idea-card' id=${$id}>
       <div class='title-line'>
@@ -21,7 +21,7 @@ function prependCard($id, $ideaTitle, $ideaContent, quality) {
         </button>
         <button id='downvote-btn'>
         </button>
-        <p id='quality-line'>quality:  <span id="qual">${quality}</span></p>
+        <p id='rating-line'>importance: <span id="qual">${rating}</span></p>
       </div>
      </div>`
    )
@@ -34,8 +34,8 @@ $(document).ready(function() {
     var $ideaTitle = parsedObj.title
     var $ideaContent = parsedObj.body
     var $id = parsedObj.id
-    var quality = parsedObj.quality
-    prependCard($id, $ideaTitle, $ideaContent, quality)
+    var rating = parsedObj.rating
+    prependCard($id, $ideaTitle, $ideaContent, rating)
   }
 })
 
@@ -43,40 +43,63 @@ $('#save-btn').on('click', function() {
   var ideaTitle = $('#item-title').val()
   var ideaContent = $('#item-content').val()
   var id = $.now()
-  var quality = 'swill'
+  var rating = 'normal'
   var newIdea = new Idea(id,ideaTitle,ideaContent)
   localStorage.setItem(id, JSON.stringify(newIdea))
-  prependCard(id,ideaTitle,ideaContent,quality)
+  prependCard(id,ideaTitle,ideaContent,rating)
   $('#item-title').val('')
   $('#item-content').val('')
 })
 
 $('#card-box').on('click', '#upvote-btn', function() {
-  var qualityText = $(this).siblings('#quality-line').children()
-  if (qualityText.text() === 'swill') {
-    qualityText.text('plausible')
-  } else if (qualityText.text() === 'plausible') {
-    qualityText.text('genius')
-  }
+  var ratingText = $(this).siblings('#rating-line').children()
+    switch(ratingText.text()) {
+      case 'critical':
+      ratingText.text('critical');
+      break;
+      case 'high':
+      ratingText.text('critical');
+      break;
+      case 'normal':
+      ratingText.text('high');
+      break;
+      case 'low':
+      ratingText.text('normal');
+      break;
+      case 'none':
+      ratingText.text('low');
+      break;
+    }
   var thisCardObj = $(this).closest('.idea-card')
   var idValue = thisCardObj.attr('id')
   var lsItem = JSON.parse(localStorage.getItem(idValue))
-  lsItem.quality = qualityText.text()
+  lsItem.rating = ratingText.text()
   localStorage.setItem(idValue, JSON.stringify(lsItem))
 })
 
 $('#card-box').on('click', '#downvote-btn', function() {
-  var qualityText = $(this).siblings('#quality-line').children()
-  if (qualityText.text() === 'genius') {
-    qualityText.text('plausible')
-  } else if (qualityText.text() === 'plausible') {
-    qualityText.text('swill')
+  var ratingText = $(this).siblings('#rating-line').children()
+  switch(ratingText.text()) {
+    case 'critical':
+    ratingText.text('high');
+    break;
+    case 'high':
+    ratingText.text('normal');
+    break;
+    case 'normal':
+    ratingText.text('low');
+    break;
+    case 'low':
+    ratingText.text('none');
+    break;
+    case 'none':
+    ratingText.text('none');
+    break;
   }
-
   var thisCardObj = $(this).closest('.idea-card')
   var idValue = thisCardObj.attr('id')
   var lsItem = JSON.parse(localStorage.getItem(idValue))
-  lsItem.quality = qualityText.text()
+  lsItem.rating = ratingText.text()
   localStorage.setItem(idValue, JSON.stringify(lsItem))
 })
 
