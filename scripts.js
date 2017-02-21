@@ -9,25 +9,27 @@ function Idea(id, title, body, rating, complete) {
 function prependCard(i) {
   $('#card-box').prepend(
     `<article class='idea-card ${i.complete}' id="${i.id}">
-      <section class='title-line'>
-        <div id='line-1'>
-          <h2 class='title-edit' contenteditable>${i.title}</h2>
-        </div>
-        <div class="status-btn-box">
-          <button id='complete-btn' class="status-btn" type="button" name="complete button"></button>
-          <button id='delete-btn' class="status-btn" type="button" name="delete button"></button>
-        </div>
-        <div>
-          <p id='line-2' contenteditable>${i.body}</p>
-        </div>
-      </section>
-      <section id='line-3'>
-        <button id='upvote-btn'></button>
-        <button id='downvote-btn'></button>
-        <p id='rating-line'>importance: <span id="qual">${i.rating}</span></p>
-      </section>
+      <img id="completed-x" src="./images/red-x.png" alt="cross out">
+        <section class='title-line'>
+          <div id='line-1'>
+            <h2 class='title-edit' contenteditable>${i.title}</h2>
+            <div class="status-btn-box">
+              <button id='complete-btn' class="status-btn" type="button" name="complete button"></button>
+              <button id='delete-btn' class="status-btn" type="button" name="delete button"></button>
+            </div>
+          </div>
+          <div>
+            <p id='line-2' contenteditable>${i.body}</p>
+          </div>
+        </section>
+        <section id='line-3'>
+          <button id='upvote-btn'></button>
+          <button id='downvote-btn'></button>
+          <p id='rating-line'>importance:<span id="qual">${i.rating}</span></p>
+        </section>
+      </img>
     </article>`
-   )
+  )
 }
 
 function printCard() {
