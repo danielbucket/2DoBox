@@ -9,44 +9,26 @@ body {
   color: #00A79D;
 }
 
-/*.filter-checkbxs {
-  display: flex;
-  justify-content: center;
-  margin: 10px 5px;
-}*/
-
-/*.filter-checkbxs label {
-  color: #6D6E71;
-  padding: 0px 10px;
-  font-family: 'Open Sans', sans-serif;
-}*/
-
-/*.filter-checkbxs h4 {
-  color: #6D6E71;
-  margin: 0;
-}*/
-
-/*input[type="checkbox"] {
-  border-style: dotted;
-}*/
-
 .filter-btns {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  width: 40%;
   align-content: space-between;
-  margin: 10px 5px;
+  margin: 10px auto;
 }
-
-.filter-btns h4 {
-  margin: 0 5px;
+.filter-label {
+  width: 50%;
+  margin: 0 auto;
 }
 
 .filter-btns button {
   border: none;
-  margin: 0px 5px;
   background-color: #6D6E71;
   color: #FFF;
   font-family: 'Open Sans', sans-serif;
+  width: 100px;
+  margin: 5px 5px;
 }
 
 .filter-btns button:hover {
@@ -72,6 +54,8 @@ body {
   z-index: 1;
   width: 100%;
   height: 100%;
+  opacity: .7;
+
 }
 
 #card-box {
@@ -128,7 +112,7 @@ body {
   flex-direction: column;
   align-items: center;
   height: auto;
-  width: 100%;
+  width: 60%;
 }
 
 h1{
@@ -161,7 +145,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 60%;
+  height: 50%;
   width: 100%;
   background-color: #E5F3F2;
 }
@@ -258,18 +242,21 @@ p {
   outline: none;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 600px) {
+  #input-field-box {
+    width: 95%;
+  }
+
   #input-side {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: auto;
-    width: 100%;
+    height: 350px;
   }
 
   .content-width {
     border: solid 1px #D1D3D4;
-    width: 50%;
+    width: 70%;
     margin-top: 20px;
   }
 
@@ -279,6 +266,10 @@ p {
 
   .item-card {
     margin:0 auto;
+    width: 50%;
+  }
+
+  .filter-button {
     width: 50%;
   }
 
