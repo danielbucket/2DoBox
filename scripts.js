@@ -8,7 +8,7 @@ function Idea(id, title, body, rating, complete) {
 
 function prependCard(i) {
   $('#card-box').prepend(
-    `<article class='idea-card ${i.complete}' id="${i.id}">
+    `<article class='item-card ${i.complete}' id="${i.id}">
       <img id="${i.complete}" src="./images/red-x.png" alt="cross out">
         <section class='title-line'>
           <div id='line-1'>
