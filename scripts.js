@@ -8,26 +8,29 @@ function Idea(id, title, body, rating, complete) {
 
 function prependCard(i) {
   $('#card-box').prepend(
-    `<article class='item-card ${i.complete}' id="${i.id}">
-      <section class='title-line'>
-        <div id='line-1'>
-          <h2 class='title-edit' contenteditable>${i.title}</h2>
-        </div>
-        <div class="status-btn-box">
-          <button id='complete-btn' class="status-btn" type="button" name="complete button"></button>
-          <button id='delete-btn' class="status-btn" type="button" name="delete button"></button>
-        </div>
-        <div>
-          <p id='line-2' contenteditable>${i.body}</p>
-        </div>
-      </section>
-      <section id='line-3'>
-        <button id='upvote-btn'></button>
-        <button id='downvote-btn'></button>
-        <p id='rating-line'>importance: <span id="qual">${i.rating}</span></p>
-      </section>
+    `<article class='idea-card ${i.complete}' id="${i.id}">
+      <img id="${i.complete}" src="./images/red-x.png" alt="cross out">
+        <section class='title-line'>
+          <div id='line-1'>
+            <h2 class='title-edit' contenteditable>${i.title}</h2>
+            <div class="status-btn-box">
+              <button id='complete-btn' class="status-btn" type="button" name="complete button"></button>
+              <button id='delete-btn' class="status-btn" type="button" name="delete button"></button>
+            </div>
+          </div>
+          <div>
+            <p id='line-2' contenteditable>${i.body}</p>
+          </div>
+        </section>
+        <section id='line-3'>
+          <button id='upvote-btn'></button>
+          <button id='downvote-btn'></button>
+          <p id='rating-line'>importance:<span id="qual">${i.rating}</span></p>
+        </section>
+      </img>
+
     </article>`
-   )
+  )
 }
 
 function printCard() {
@@ -85,8 +88,8 @@ $('#card-box').on('click', '#downvote-btn', function() {
 $('#card-box').on('click', '#complete-btn', function() {
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   switch(thisCard.complete) {
-    case 'notComplete': thisCard.complete = 'complete'; break
-    case 'complete': thisCard.complete = 'notComplete'; break
+    case 'notComplete': thisCard.complete = 'complete'; break;
+    case 'complete': thisCard.complete = 'notComplete'; break;
   }
   localStorage.setItem(thisCard.id,JSON.stringify(thisCard))
   printCard()
