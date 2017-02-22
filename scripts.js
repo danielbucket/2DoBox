@@ -25,10 +25,9 @@ function prependCard(i) {
         <section id='line-3'>
           <button id='upvote-btn'></button>
           <button id='downvote-btn'></button>
-          <p id='rating-line'>importance: <span id="rate">${i.rating}</span></p>
+          <p id='rating-line'>importance:<span id="rate">${i.rating}</span></p>
         </section>
       </img>
-
     </article>`
   )
 }
