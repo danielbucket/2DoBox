@@ -132,7 +132,10 @@ $('#search').on('keyup', function() {
 $('#rating-critical').on('click', function() {
   $('#rate').each(function (){
     var cardRating = $('#rate').text().toLowerCase()
+    console.log(cardRating)
     var ratingFilter = $('#rating-critical').text().toLowerCase()
+    console.log(ratingFilter)
+
     if (cardRating === ratingFilter) {
       $(this).closest('.item-card').toggle(true)
     } else {
@@ -141,18 +144,6 @@ $('#rating-critical').on('click', function() {
   })
 })
 
-// $('#rating-high').on('click', function() {
-//   console.log('hi button clicked')
-//   $('#rate').each(function (){
-//     var cardRating = $('#rate').text().toLowerCase()
-//     var ratingFilter = $('#rating-high').text().toLowerCase()
-//     if (cardRating === ratingFilter) {
-//       $(this).closest('.item-card').toggle(true)
-//     } else {
-//       $(this).closest('.item-card').toggle(false)
-//     }
-//   })
-// })
 
 //disable button function
 $('#item-title, #item-content').on('keyup', function() {
