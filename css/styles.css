@@ -9,6 +9,11 @@ body {
   color: #00A79D;
 }
 
+.filter-label {
+  width: 50%;
+  margin: 0 auto;
+}
+
 .filter-btns {
   display: flex;
   flex-wrap: wrap;
@@ -17,10 +22,7 @@ body {
   align-content: space-between;
   margin: 10px auto;
 }
-.filter-label {
-  width: 50%;
-  margin: 0 auto;
-}
+
 
 .filter-btns button {
   border: none;
@@ -62,9 +64,6 @@ body {
   width: 100%;
 }
 
-<<<<<<< HEAD:styles.css
-#delete-btn {
-=======
 .status-btn-box {
   float: right;
   margin-top: 2em;
@@ -73,7 +72,6 @@ body {
 
 .status-btn {
   display: block;
->>>>>>> master:css/styles.css
   background: none;
   border: none;
   width: 30px;
@@ -87,11 +85,7 @@ body {
 }
 
 #delete-btn:hover {
-<<<<<<< HEAD:styles.css
-  background-image: url('images/delete-hover.svg');
-=======
   background-image: url('../images/delete-hover.svg');
->>>>>>> master:css/styles.css
 }
 
 #delete-btn:focus {
@@ -203,11 +197,7 @@ p {
 }
 
 #save-btn:hover {
-<<<<<<< HEAD:styles.css
-    background: #045E55;
-=======
   background: #045E55;
->>>>>>> master:css/styles.css
 }
 
 #search {
@@ -228,11 +218,6 @@ p {
 }
 
 #upvote-btn:hover {
-<<<<<<< HEAD:styles.css
-  background-image: url('images/upvote-hover.svg');
-}
-
-=======
   background-image: url('../images/upvote-hover.svg');
 }
 
@@ -240,7 +225,6 @@ p {
   outline: none;
 }
 
->>>>>>> master:css/styles.css
 #downvote-btn {
   background: none;
   border: none;
@@ -253,11 +237,7 @@ p {
 }
 
 #downvote-btn:hover {
-<<<<<<< HEAD:styles.css
-  background-image: url('images/downvote-hover.svg');
-=======
   background-image: url('../images/downvote-hover.svg');
->>>>>>> master:css/styles.css
 }
 
 #downvote-btn:focus {
