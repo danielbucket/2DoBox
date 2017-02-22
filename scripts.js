@@ -25,7 +25,7 @@ function prependCard(i) {
         <section id='line-3'>
           <button id='upvote-btn'></button>
           <button id='downvote-btn'></button>
-          <p id='rating-line'>importance:<span id="qual">${i.rating}</span></p>
+          <p id='rating-line'>importance: <span id="rate">${i.rating}</span></p>
         </section>
       </img>
 
@@ -58,11 +58,11 @@ $('#save-btn').on('click', function() {
 $('#card-box').on('click', '#upvote-btn', function() {
   var ratingText = $(this).siblings('#rating-line').children()
     switch(ratingText.text()) {
-      case 'critical': ratingText.text('critical'); break
-      case 'high': ratingText.text('critical'); break
-      case 'normal': ratingText.text('high'); break
-      case 'low': ratingText.text('normal'); break
-      case 'none': ratingText.text('low'); break
+      case 'critical': ratingText.text('critical'); break;
+      case 'high': ratingText.text('critical'); break;
+      case 'normal': ratingText.text('high'); break;
+      case 'low': ratingText.text('normal'); break;
+      case 'none': ratingText.text('low'); break;
     }
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.rating = ratingText.text()
@@ -126,6 +126,86 @@ $('#search').on('keyup', function() {
       $(this).closest('.item-card').toggle(false)
     }
   })
+})
+
+//filter by critical rating
+function sortByCritical() {
+  $("#card-box").html('')
+  for (var i = 0; i < localStorage.length; i++) {
+    var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    if (rateValue.rating === "critical"){
+      prependCard(rateValue);
+    }
+  }
+}
+
+$('#rating-critical').on('click',function(){
+  sortByCritical()
+})
+
+//filter by high rating
+function sortByHigh() {
+  $("#card-box").html('')
+  for (var i = 0; i < localStorage.length; i++) {
+    var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    if (rateValue.rating === "high"){
+      prependCard(rateValue);
+    }
+  }
+}
+
+$('#rating-high').on('click',function(){
+  sortByHigh()
+})
+
+//filter by normal rating
+function sortByNormal() {
+  $("#card-box").html('')
+  for (var i = 0; i < localStorage.length; i++) {
+    var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    if (rateValue.rating === "normal"){
+      prependCard(rateValue);
+    }
+  }
+}
+
+$('#rating-normal').on('click',function(){
+  sortByNormal()
+})
+
+//filter by low rating
+function sortByLow() {
+  $("#card-box").html('')
+  for (var i = 0; i < localStorage.length; i++) {
+    var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    if (rateValue.rating === "low"){
+      prependCard(rateValue);
+    }
+  }
+}
+
+$('#rating-low').on('click',function(){
+  sortByLow()
+})
+
+//filter by none rating
+function sortByNone() {
+  $("#card-box").html('')
+  for (var i = 0; i < localStorage.length; i++) {
+    var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    if (rateValue.rating === "none"){
+      prependCard(rateValue);
+    }
+  }
+}
+
+$('#rating-none').on('click',function(){
+  sortByNone()
+})
+
+//clear filters
+$('#rating-clear').on('click', function() {
+  printCard()
 })
 
 //disable button function
