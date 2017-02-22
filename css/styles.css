@@ -9,6 +9,27 @@ body {
   color: #00A79D;
 }
 
+.filter-checkbxs {
+  display: flex;
+  justify-content: center;
+  margin: 10px 5px;
+}
+
+.filter-checkbxs label {
+  color: #6D6E71;
+  padding: 0px 10px;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+/*.filter-checkbxs input {
+  color: orange
+}*/
+
+/*input[type="checkbox"] {
+  border-style: dotted;
+}*/
+
 .search-container {
   display: flex;
   justify-content: center;
