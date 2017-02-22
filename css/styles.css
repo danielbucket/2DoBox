@@ -123,11 +123,6 @@ body {
   width: 90%;
 }
 
-.complete {
-  background-image: url('../images/black-x.png');
-  background-size: 100% 100%;
-}
-
 #input-field-box {
   display: flex;
   flex-direction: column;

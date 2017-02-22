@@ -128,22 +128,85 @@ $('#search').on('keyup', function() {
   })
 })
 
-//filter by rating
-$('#rating-critical').on('click', function() {
-  $('#rate').each(function (){
-    var cardRating = $('#rate').text().toLowerCase()
-    console.log(cardRating)
-    var ratingFilter = $('#rating-critical').text().toLowerCase()
-    console.log(ratingFilter)
-
-    if (cardRating === ratingFilter) {
-      $(this).closest('.item-card').toggle(true)
-    } else {
-      $(this).closest('.item-card').toggle(false)
+//filter by critical rating
+function sortByCritical() {
+  $("#card-box").html('')
+  for (var i = 0; i < localStorage.length; i++) {
+    var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    if (rateValue.rating === "critical"){
+      prependCard(rateValue);
     }
-  })
+  }
+}
+
+$('#rating-critical').on('click',function(){
+  sortByCritical()
 })
 
+//filter by high rating
+function sortByHigh() {
+  $("#card-box").html('')
+  for (var i = 0; i < localStorage.length; i++) {
+    var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    if (rateValue.rating === "high"){
+      prependCard(rateValue);
+    }
+  }
+}
+
+$('#rating-high').on('click',function(){
+  sortByHigh()
+})
+
+//filter by normal rating
+function sortByNormal() {
+  $("#card-box").html('')
+  for (var i = 0; i < localStorage.length; i++) {
+    var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    if (rateValue.rating === "normal"){
+      prependCard(rateValue);
+    }
+  }
+}
+
+$('#rating-normal').on('click',function(){
+  sortByNormal()
+})
+
+//filter by low rating
+function sortByLow() {
+  $("#card-box").html('')
+  for (var i = 0; i < localStorage.length; i++) {
+    var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    if (rateValue.rating === "low"){
+      prependCard(rateValue);
+    }
+  }
+}
+
+$('#rating-low').on('click',function(){
+  sortByLow()
+})
+
+//filter by none rating
+function sortByNone() {
+  $("#card-box").html('')
+  for (var i = 0; i < localStorage.length; i++) {
+    var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    if (rateValue.rating === "none"){
+      prependCard(rateValue);
+    }
+  }
+}
+
+$('#rating-none').on('click',function(){
+  sortByNone()
+})
+
+//clear filters
+$('#rating-clear').on('click', function() {
+  printCard()
+})
 
 //disable button function
 $('#item-title, #item-content').on('keyup', function() {
