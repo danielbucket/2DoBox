@@ -9,34 +9,118 @@ body {
   color: #00A79D;
 }
 
+.filter-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 40%;
+  align-content: space-between;
+  margin: 10px auto;
+}
+.filter-label {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.filter-btns button {
+  border: none;
+  background-color: #6D6E71;
+  color: #FFF;
+  font-family: 'Open Sans', sans-serif;
+  width: 100px;
+  margin: 5px 5px;
+}
+
+.filter-btns button:hover {
+  background-color: #045E55;
+}
+
+.filter-btns button:focus {
+  background-color: #045E55;
+  border: none;
+}
+
 .search-container {
   display: flex;
   justify-content: center;
 }
 
-#display-side {
+#notComplete {
+  display: none;
+}
+
+#complete {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: .7;
+
+}
+
+#card-box {
   width: 100%;
 }
 
+<<<<<<< HEAD:styles.css
 #delete-btn {
+=======
+.status-btn-box {
+  float: right;
+  margin-top: 2em;
+  z-index: 2;
+}
+
+.status-btn {
+  display: block;
+>>>>>>> master:css/styles.css
   background: none;
   border: none;
-  background-image: url('images/delete.svg');
-  background-repeat: no-repeat;
   width: 30px;
-  margin-top: 22px;
+  height: 30px;
+  margin: 10px 0 0 0;
+}
+
+#delete-btn {
+  background-image: url('../images/delete.svg');
+  background-repeat: no-repeat;
 }
 
 #delete-btn:hover {
+<<<<<<< HEAD:styles.css
   background-image: url('images/delete-hover.svg');
+=======
+  background-image: url('../images/delete-hover.svg');
+>>>>>>> master:css/styles.css
 }
 
-#enter-div {
+#delete-btn:focus {
+  outline: none;
+}
+
+#complete-btn {
+  width: 27px;
+  background-image: url('../images/success-1.svg');
+  background-repeat: no-repeat;
+}
+
+#complete-btn:hover {
+  background-image: url('../images/success.svg');
+  background-repeat: no-repeat;
+}
+
+.item-card {
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+}
+
+#input-field-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: auto;
-  width: 100%;
+  width: 60%;
 }
 
 h1{
@@ -48,11 +132,6 @@ h1{
 h2 {
   max-width: 80%;
   color: #6D6E71;
-}
-
-.idea-card {
-  margin: 0 auto;
-  width: 90%;
 }
 
 #item-content {
@@ -68,14 +147,13 @@ h2 {
   height: 32px;
   font-size: 24px;
   border: 2px solid #D1D3D4;
-
 }
 
 #input-side {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 60%;
+  height: 50%;
   width: 100%;
   background-color: #E5F3F2;
 }
@@ -109,7 +187,7 @@ p {
   margin: 0;
 }
 
-#quality-line {
+#rating-line {
   color: #6D6E71;
 }
 
@@ -125,11 +203,14 @@ p {
 }
 
 #save-btn:hover {
+<<<<<<< HEAD:styles.css
     background: #045E55;
+=======
+  background: #045E55;
+>>>>>>> master:css/styles.css
 }
 
-#search,
-#idea-title {
+#search {
   font-size: 24px;
   letter-spacing: 1px;
   border: 2px solid #D1D3D4;
@@ -138,7 +219,7 @@ p {
 #upvote-btn {
   background: none;
   border: none;
-  background-image: url('images/upvote.svg');
+  background-image: url('../images/upvote.svg');
   background-repeat: no-repeat;
   width: 30px;
   margin-right: 10px;
@@ -147,13 +228,23 @@ p {
 }
 
 #upvote-btn:hover {
+<<<<<<< HEAD:styles.css
   background-image: url('images/upvote-hover.svg');
 }
 
+=======
+  background-image: url('../images/upvote-hover.svg');
+}
+
+#upvote-btn:focus {
+  outline: none;
+}
+
+>>>>>>> master:css/styles.css
 #downvote-btn {
   background: none;
   border: none;
-  background-image: url('images/downvote.svg');
+  background-image: url('../images/downvote.svg');
   background-repeat: no-repeat;
   width: 30px;
   margin-right: 10px;
@@ -162,22 +253,32 @@ p {
 }
 
 #downvote-btn:hover {
+<<<<<<< HEAD:styles.css
   background-image: url('images/downvote-hover.svg');
+=======
+  background-image: url('../images/downvote-hover.svg');
+>>>>>>> master:css/styles.css
 }
 
+#downvote-btn:focus {
+  outline: none;
+}
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 600px) {
+  #input-field-box {
+    width: 95%;
+  }
+
   #input-side {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: auto;
-    width: 100%;
+    height: 350px;
   }
 
   .content-width {
     border: solid 1px #D1D3D4;
-    width: 50%;
+    width: 70%;
     margin-top: 20px;
   }
 
@@ -185,15 +286,12 @@ p {
     font-size: 70px;
   }
 
-  #idea-content {
-    min-height: 0;
-    max-height: 26px;
-    max-width: 50%;
-    min-width: 50%;
+  .item-card {
+    margin:0 auto;
+    width: 50%;
   }
 
-  .idea-card {
-    margin:0 auto;
+  .filter-button {
     width: 50%;
   }
 
