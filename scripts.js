@@ -25,7 +25,7 @@ function prependCard(i) {
         <section id='line-3'>
           <button id='upvote-btn'></button>
           <button id='downvote-btn'></button>
-          <p id='rating-line'>importance:<span id="rate"> ${i.rating}</span></p>
+          <p id='rating-line'>importance: <span id="rate">${i.rating}</span></p>
         </section>
       </img>
 
@@ -57,12 +57,13 @@ $('#save-btn').on('click', function() {
 //up vote button
 $('#card-box').on('click', '#upvote-btn', function() {
   var ratingText = $(this).siblings('#rating-line').children()
+console.log(ratingText.text()[0])
     switch(ratingText.text()) {
-      case 'critical': ratingText.text('critical'); break
-      case 'high': ratingText.text('critical'); break
-      case 'normal': ratingText.text('high'); break
-      case 'low': ratingText.text('normal'); break
-      case 'none': ratingText.text('low'); break
+      case 'critical': ratingText.text('critical'); break;
+      case 'high': ratingText.text('critical'); break;
+      case 'normal': ratingText.text('high'); break;
+      case 'low': ratingText.text('normal'); break;
+      case 'none': ratingText.text('low'); break;
     }
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.rating = ratingText.text()
@@ -117,8 +118,11 @@ $('#card-box').on('blur', '#line-2', function() {
 
 //search function
 $('#search').on('keyup', function() {
+  //collect values from search input field and change to lowercase
   var searchInput = $(this).val().toLowerCase()
+  //get array of all titleline elements and loop thru each element
   $('.title-line').each(function() {
+  //create variable and assign the text from each method
     var searchText = $(this).text().toLowerCase()
     if (!!searchText.match(searchInput)) {
       $(this).closest('.item-card').toggle(true)
@@ -127,12 +131,14 @@ $('#search').on('keyup', function() {
     }
   })
 })
+
 //filter by rating
-$('.rating-critical').on('click', function() {
+$('#rating-critical').on('click', function() {
   console.log('critical selected')
 
-  var cardRating = $(this).val()
-  if (!!cardRating.match('critical')) {
+  var cardRating = $(this).text().toLowerCase()
+  console.log(cardRating)
+  if (!!xxx.match(cardRating)) {
     $(this).closest('.item-card').toggle(true)
   } else {
     $(this).closest('.item-card').toggle(true)
