@@ -9,7 +9,7 @@ function Idea(id, title, body, rating, complete) {
 function prependCard(i) {
   $('#card-box').prepend(
     `<article class='idea-card ${i.complete}' id="${i.id}">
-      <img id="completed-x" src="./images/red-x.png" alt="cross out">
+      <img id="${i.complete}" src="./images/red-x.png" alt="cross out">
         <section class='title-line'>
           <div id='line-1'>
             <h2 class='title-edit' contenteditable>${i.title}</h2>
@@ -87,8 +87,8 @@ $('#card-box').on('click', '#downvote-btn', function() {
 $('#card-box').on('click', '#complete-btn', function() {
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.idea-card').attr('id')))
   switch(thisCard.complete) {
-    case 'notComplete': thisCard.complete = 'complete'; break
-    case 'complete': thisCard.complete = 'notComplete'; break
+    case 'notComplete': thisCard.complete = 'complete'; break;
+    case 'complete': thisCard.complete = 'notComplete'; break;
   }
   localStorage.setItem(thisCard.id,JSON.stringify(thisCard))
   printCard()
