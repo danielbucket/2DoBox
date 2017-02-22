@@ -57,7 +57,6 @@ $('#save-btn').on('click', function() {
 //up vote button
 $('#card-box').on('click', '#upvote-btn', function() {
   var ratingText = $(this).siblings('#rating-line').children()
-console.log(ratingText.text()[0])
     switch(ratingText.text()) {
       case 'critical': ratingText.text('critical'); break;
       case 'high': ratingText.text('critical'); break;
@@ -118,11 +117,8 @@ $('#card-box').on('blur', '#line-2', function() {
 
 //search function
 $('#search').on('keyup', function() {
-  //collect values from search input field and change to lowercase
   var searchInput = $(this).val().toLowerCase()
-  //get array of all titleline elements and loop thru each element
   $('.title-line').each(function() {
-  //create variable and assign the text from each method
     var searchText = $(this).text().toLowerCase()
     if (!!searchText.match(searchInput)) {
       $(this).closest('.item-card').toggle(true)
@@ -134,17 +130,29 @@ $('#search').on('keyup', function() {
 
 //filter by rating
 $('#rating-critical').on('click', function() {
-  console.log('critical selected')
-
-  var cardRating = $(this).text().toLowerCase()
-  console.log(cardRating)
-  if (!!xxx.match(cardRating)) {
-    $(this).closest('.item-card').toggle(true)
-  } else {
-    $(this).closest('.item-card').toggle(true)
-  }
+  $('#rate').each(function (){
+    var cardRating = $('#rate').text().toLowerCase()
+    var ratingFilter = $('#rating-critical').text().toLowerCase()
+    if (cardRating === ratingFilter) {
+      $(this).closest('.item-card').toggle(true)
+    } else {
+      $(this).closest('.item-card').toggle(false)
+    }
+  })
 })
 
+// $('#rating-high').on('click', function() {
+//   console.log('hi button clicked')
+//   $('#rate').each(function (){
+//     var cardRating = $('#rate').text().toLowerCase()
+//     var ratingFilter = $('#rating-high').text().toLowerCase()
+//     if (cardRating === ratingFilter) {
+//       $(this).closest('.item-card').toggle(true)
+//     } else {
+//       $(this).closest('.item-card').toggle(false)
+//     }
+//   })
+// })
 
 //disable button function
 $('#item-title, #item-content').on('keyup', function() {
