@@ -25,7 +25,7 @@ function prependCard(i) {
         <section id='line-3'>
           <button id='upvote-btn'></button>
           <button id='downvote-btn'></button>
-          <p id='rating-line'>importance:<span id="qual">${i.rating}</span></p>
+          <p id='rating-line'>importance:<span id="rate"> ${i.rating}</span></p>
         </section>
       </img>
 
@@ -127,6 +127,18 @@ $('#search').on('keyup', function() {
     }
   })
 })
+//filter by rating
+$('.rating-critical').on('click', function() {
+  console.log('critical selected')
+
+  var cardRating = $(this).val()
+  if (!!cardRating.match('critical')) {
+    $(this).closest('.item-card').toggle(true)
+  } else {
+    $(this).closest('.item-card').toggle(true)
+  }
+})
+
 
 //disable button function
 $('#item-title, #item-content').on('keyup', function() {
