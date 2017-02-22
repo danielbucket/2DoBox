@@ -9,7 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 50%;
+  height: 35%;
   width: 100%;
   background-color: #E5F3F2;
 }
@@ -27,7 +27,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 40%;
+  width: 70%;
   align-content: space-between;
   margin: 10px auto;
 }
@@ -55,14 +55,19 @@ body {
   justify-content: center;
 }
 
+.content-width {
+  width: 100%;
+  margin-top: 20px;
+}
+
 #card-box {
-  width: 50%;
+  width: 100%;
 }
 
 .item-card {
   position: relative;
   margin: 0 auto;
-  width: 90%;
+  width: 50%;
 }
 
 #line-1 {
@@ -135,16 +140,9 @@ body {
   border: 2px solid #D1D3D4;
 }
 
-.content-width {
-  width: 90%;
-  margin-top: 20px;
-}
-
 #item-content {
   font-size: 24px;
-  max-width: 90%;
-  max-height: 80px;
-  min-height: 80px;
+  max-height: 32px;
   letter-spacing: 1px;
   border: 2px solid #D1D3D4;
 }
@@ -242,7 +240,7 @@ p {
   border: 2px solid #D1D3D4;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) {
   #input-field-box {
     width: 95%;
   }
@@ -256,8 +254,12 @@ p {
 
   .content-width {
     border: solid 1px #D1D3D4;
-    width: 70%;
+    width: 90%;
     margin-top: 20px;
+  }
+
+  #item-content {
+    max-height: 80px;
   }
 
   h1 {
@@ -267,6 +269,11 @@ p {
   .item-card {
     margin:0 auto;
     width: 50%;
+  }
+
+  .filter-btns {
+    background-color: yellow;
+    width: 200px;
   }
 
   .filter-button {
