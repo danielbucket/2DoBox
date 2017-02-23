@@ -73,14 +73,6 @@ body {
   width: 150px;
 }
 
-.show-more span {
-  margin-left: 3px;
-}
-
-.show-more:hover {
-  background-color: #6D6E71;
-}
-
 #search {
   width: 90%;
   font-size: 24px;

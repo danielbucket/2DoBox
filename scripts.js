@@ -1,3 +1,5 @@
+var a = 10
+
 function Idea(id,title,body,rating,complete) {
   this.id = id
   this.title = title
@@ -5,15 +7,6 @@ function Idea(id,title,body,rating,complete) {
   this.rating = rating
   this.complete = complete
 }
-
-// function RateCounter(critical,high,normal,low,none) {
-//   this.critical = critical
-//   this.high = high
-//   this.normal = normal
-//   this.low = low
-//   this.none = none
-// }
-
 function prependCard(i) {
   $('#card-box').prepend(
     `<article class='item-card ${i.complete}' id="${i.id}">
@@ -43,28 +36,9 @@ function prependCard(i) {
 function printCard(a) {
   $('#card-box').html('')
   for (var i=0;i<a;i++) {
-    prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))),a)
+    prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))))
   }
 }
-
-// function rateCount() {
-//   var getRating = JSON.parse(localStorage.getItem('r8'))
-//   for (var i=0;i<getRating.length;i++) {
-//
-//   }
-//
-//   var ratingCount = new RateCounter(critical,high,normal,low,none)
-//   localStorage.setItem('r8',JSON.stringify(ratingCount))
-// }
-
-// function displayRatingCounter() {
-//   var grabRate = localStorage.getItem(JSON.parse(r8))
-//   $('rating-critical span').html(getRating.critical)
-//   $('rating-high').html(getRating.high)
-//   $('rating-normal').html(getRating.normal)
-//   $('rating-low').html(getRating.low)
-//   $('rating-low').html(getRating.none)
-// }
 
 //save button
 $('#save-btn').on('click', function() {
@@ -93,7 +67,7 @@ $('#card-box').on('click', '#upvote-btn', function() {
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.rating = ratingText.text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
-  printCard(5)
+  printCard(a)
 })
 
 //down vote button
@@ -110,7 +84,7 @@ $('#card-box').on('click', '#downvote-btn', function() {
   thisCard.rating = ratingText.text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
   // rateCount()
-  printCard(5)
+  printCard(a)
 })
 
 //task complete button
@@ -121,13 +95,13 @@ $('#card-box').on('click', '#complete-btn', function() {
     case 'complete': thisCard.complete = 'notComplete'; break
   }
   localStorage.setItem(thisCard.id,JSON.stringify(thisCard))
-  printCard(5)
+  printCard(a)
 })
 
 //delete button
 $('#card-box').on('click', '#delete-btn', function() {
   localStorage.removeItem($(this).closest('.item-card').attr('id'))
-  printCard(5)
+  printCard(a)
 })
 
 //content editable title
@@ -214,21 +188,33 @@ $('#rating-none').on('click',function(){
 
 //clear filters
 $('#rating-clear').on('click', function() {
-  printCard(5)
+  printCard(a)
 })
 
-//filter by Show Completed
-function sortByCompleted() {
-  $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
-    var showComplete = JSON.parse(localStorage.getItem(localStorage.key(i)))
-    if (showComplete.complete === "complete"){
-      prependCard(showComplete)
-    }
+//toggle complete cards
+var count = 0
+$('#show-completed').on('click', function() {
+  $('#card-box').html('')
+  count++
+  var countEven = function(count) {
+    return (count % 2 === 0) ? true : false;
   }
-}
-$('#show-completed').on('click',function(){
-  sortByCompleted()
+  if (countEven(count) === true) {
+    for (var i = 0; i < localStorage.length; i++) {
+      var findComplete = JSON.parse(localStorage.getItem(localStorage.key(i)))
+      if (findComplete.complete === "complete"){
+        prependCard(findComplete)
+      }
+    }
+  } else if (
+    countEven(count) === false) {
+      for (var i = 0; i < localStorage.length; i++) {
+        var findNotComplete = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        if (findNotComplete.complete === "notComplete"){
+          prependCard(findNotComplete)
+        }
+      }
+    }
 })
 
 //disable button function
@@ -243,10 +229,9 @@ $('#item-title, #item-content').on('keyup', function() {
 })
 
 //show more
-var a = 5
 $('#show-more').on('click', function() {
   a = a+=5
   printCard(a)
 })
 
-printCard(5)
+printCard(a)
