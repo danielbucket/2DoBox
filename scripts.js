@@ -6,6 +6,14 @@ function Idea(id,title,body,rating,complete) {
   this.complete = complete
 }
 
+// function RateCounter(critical,high,normal,low,none) {
+//   this.critical = critical
+//   this.high = high
+//   this.normal = normal
+//   this.low = low
+//   this.none = none
+// }
+
 function prependCard(i) {
   $('#card-box').prepend(
     `<article class='item-card ${i.complete}' id="${i.id}">
@@ -25,7 +33,7 @@ function prependCard(i) {
         <section id='line-3'>
           <button id='upvote-btn'></button>
           <button id='downvote-btn'></button>
-          <p id='rating-line'>importance:<span id="rate">${i.rating}</span></p>
+          <p id='rating-line'>importance:<span class="${i.rating}" id="rate">${i.rating}</span></p>
         </section>
       </img>
     </article>`
@@ -35,9 +43,28 @@ function prependCard(i) {
 function printCard(a) {
   $('#card-box').html('')
   for (var i=0;i<a;i++) {
-    prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))))
+    prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))),a)
   }
 }
+
+// function rateCount() {
+//   var getRating = JSON.parse(localStorage.getItem('r8'))
+//   for (var i=0;i<getRating.length;i++) {
+//
+//   }
+//
+//   var ratingCount = new RateCounter(critical,high,normal,low,none)
+//   localStorage.setItem('r8',JSON.stringify(ratingCount))
+// }
+
+// function displayRatingCounter() {
+//   var grabRate = localStorage.getItem(JSON.parse(r8))
+//   $('rating-critical span').html(getRating.critical)
+//   $('rating-high').html(getRating.high)
+//   $('rating-normal').html(getRating.normal)
+//   $('rating-low').html(getRating.low)
+//   $('rating-low').html(getRating.none)
+// }
 
 //save button
 $('#save-btn').on('click', function() {
@@ -57,15 +84,16 @@ $('#save-btn').on('click', function() {
 $('#card-box').on('click', '#upvote-btn', function() {
   var ratingText = $(this).siblings('#rating-line').children()
     switch(ratingText.text()) {
-      case 'critical': ratingText.text('critical'); break;
-      case 'high': ratingText.text('critical'); break;
-      case 'normal': ratingText.text('high'); break;
-      case 'low': ratingText.text('normal'); break;
-      case 'none': ratingText.text('low'); break;
+      case 'critical': ratingText.text('critical'); break
+      case 'high': ratingText.text('critical'); break
+      case 'normal': ratingText.text('high'); break
+      case 'low': ratingText.text('normal'); break
+      case 'none': ratingText.text('low'); break
     }
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.rating = ratingText.text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
+  printCard(5)
 })
 
 //down vote button
@@ -81,23 +109,25 @@ $('#card-box').on('click', '#downvote-btn', function() {
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.rating = ratingText.text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
+  // rateCount()
+  printCard(5)
 })
 
 //task complete button
 $('#card-box').on('click', '#complete-btn', function() {
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   switch(thisCard.complete) {
-    case 'notComplete': thisCard.complete = 'complete'; break;
-    case 'complete': thisCard.complete = 'notComplete'; break;
+    case 'notComplete': thisCard.complete = 'complete'; break
+    case 'complete': thisCard.complete = 'notComplete'; break
   }
   localStorage.setItem(thisCard.id,JSON.stringify(thisCard))
-  printCard()
+  printCard(5)
 })
 
 //delete button
 $('#card-box').on('click', '#delete-btn', function() {
   localStorage.removeItem($(this).closest('.item-card').attr('id'))
-  printCard()
+  printCard(5)
 })
 
 //content editable title
@@ -128,77 +158,63 @@ $('#search').on('keyup', function() {
 })
 
 //filter by critical rating
-function sortByCritical() {
+$('#rating-critical').on('click',function(){
   $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
+  for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "critical"){
       prependCard(rateValue)
     }
   }
-}
-$('#rating-critical').on('click',function(){
-  sortByCritical()
 })
 
 //filter by high rating
-function sortByHigh() {
+$('#rating-high').on('click',function(){
   $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
+  for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "high"){
       prependCard(rateValue)
     }
   }
-}
-$('#rating-high').on('click',function(){
-  sortByHigh()
 })
 
 //filter by normal rating
-function sortByNormal() {
+$('#rating-normal').on('click',function(){
   $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
+  for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "normal"){
       prependCard(rateValue)
     }
   }
-}
-$('#rating-normal').on('click',function(){
-  sortByNormal()
 })
 
 //filter by low rating
-function sortByLow() {
+$('#rating-low').on('click',function(){
   $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
+  for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "low"){
       prependCard(rateValue)
     }
   }
-}
-$('#rating-low').on('click',function(){
-  sortByLow()
 })
 
 //filter by none rating
-function sortByNone() {
+$('#rating-none').on('click',function(){
   $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
+  for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "none"){
       prependCard(rateValue)
     }
-}}
-$('#rating-none').on('click',function(){
-  sortByNone()
+  }
 })
 
 //clear filters
 $('#rating-clear').on('click', function() {
-  printCard(localStorage.length)
+  printCard(5)
 })
 
 //filter by Show Completed
@@ -226,6 +242,7 @@ $('#item-title, #item-content').on('keyup', function() {
   }
 })
 
+//show more
 var a = 5
 $('#show-more').on('click', function() {
   a = a+=5
