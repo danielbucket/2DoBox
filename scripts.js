@@ -201,6 +201,20 @@ $('#rating-clear').on('click', function() {
   printCard(localStorage.length)
 })
 
+//filter by Show Completed
+function sortByCompleted() {
+  $("#card-box").html('')
+  for (var i = 0; i < localStorage.length; i++) {
+    var showComplete = JSON.parse(localStorage.getItem(localStorage.key(i)))
+    if (showComplete.complete === "complete"){
+      prependCard(showComplete)
+    }
+  }
+}
+$('#show-completed').on('click',function(){
+  sortByCompleted()
+})
+
 //disable button function
 $('#item-title, #item-content').on('keyup', function() {
   var itemTitle = $('#item-title').val()
