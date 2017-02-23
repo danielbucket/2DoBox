@@ -91,13 +91,13 @@ $('#card-box').on('click', '#complete-btn', function() {
     case 'complete': thisCard.complete = 'notComplete'; break;
   }
   localStorage.setItem(thisCard.id,JSON.stringify(thisCard))
-  printCard()
+  printCard(5)
 })
 
 //delete button
 $('#card-box').on('click', '#delete-btn', function() {
   localStorage.removeItem($(this).closest('.item-card').attr('id'))
-  printCard()
+  printCard(5)
 })
 
 //content editable title
@@ -128,77 +128,63 @@ $('#search').on('keyup', function() {
 })
 
 //filter by critical rating
-function sortByCritical() {
+$('#rating-critical').on('click',function(){
   $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
+  for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "critical"){
       prependCard(rateValue)
     }
   }
-}
-$('#rating-critical').on('click',function(){
-  sortByCritical()
 })
 
 //filter by high rating
-function sortByHigh() {
+$('#rating-high').on('click',function(){
   $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
+  for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "high"){
       prependCard(rateValue)
     }
   }
-}
-$('#rating-high').on('click',function(){
-  sortByHigh()
 })
 
 //filter by normal rating
-function sortByNormal() {
+$('#rating-normal').on('click',function(){
   $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
+  for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "normal"){
       prependCard(rateValue)
     }
   }
-}
-$('#rating-normal').on('click',function(){
-  sortByNormal()
 })
 
 //filter by low rating
-function sortByLow() {
+$('#rating-low').on('click',function(){
   $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
+  for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "low"){
       prependCard(rateValue)
     }
   }
-}
-$('#rating-low').on('click',function(){
-  sortByLow()
 })
 
 //filter by none rating
-function sortByNone() {
+$('#rating-none').on('click',function(){
   $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
+  for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "none"){
       prependCard(rateValue)
     }
-}}
-$('#rating-none').on('click',function(){
-  sortByNone()
+  }
 })
 
 //clear filters
 $('#rating-clear').on('click', function() {
-  printCard(localStorage.length)
+  printCard(5)
 })
 
 //disable button function
