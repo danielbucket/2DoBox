@@ -7,15 +7,6 @@ function Idea(id,title,body,rating,complete) {
   this.rating = rating
   this.complete = complete
 }
-
-// function RateCounter(critical,high,normal,low,none) {
-//   this.critical = critical
-//   this.high = high
-//   this.normal = normal
-//   this.low = low
-//   this.none = none
-// }
-
 function prependCard(i) {
   $('#card-box').prepend(
     `<article class='item-card ${i.complete}' id="${i.id}">
@@ -48,25 +39,6 @@ function printCard(a) {
     prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))))
   }
 }
-
-// function rateCount() {
-//   var getRating = JSON.parse(localStorage.getItem('r8'))
-//   for (var i=0;i<getRating.length;i++) {
-//
-//   }
-//
-//   var ratingCount = new RateCounter(critical,high,normal,low,none)
-//   localStorage.setItem('r8',JSON.stringify(ratingCount))
-// }
-
-// function displayRatingCounter() {
-//   var grabRate = localStorage.getItem(JSON.parse(r8))
-//   $('rating-critical span').html(getRating.critical)
-//   $('rating-high').html(getRating.high)
-//   $('rating-normal').html(getRating.normal)
-//   $('rating-low').html(getRating.low)
-//   $('rating-low').html(getRating.none)
-// }
 
 //save button
 $('#save-btn').on('click', function() {
