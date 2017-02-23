@@ -7,6 +7,7 @@ function Idea(id,title,body,rating,complete) {
   this.rating = rating
   this.complete = complete
 }
+
 function prependCard(i) {
   $('#card-box').prepend(
     `<article class='item-card ${i.complete}' id="${i.id}">
@@ -83,7 +84,6 @@ $('#card-box').on('click', '#downvote-btn', function() {
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.rating = ratingText.text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
-  // rateCount()
   printCard(a)
 })
 
@@ -132,56 +132,56 @@ $('#search').on('keyup', function() {
 })
 
 //filter by critical rating
-$('#rating-critical').on('click',function(){
+$('#rating-critical').on('click',function() {
   $("#card-box").html('')
   for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
-    if (rateValue.rating === "critical"){
-      prependCard(rateValue)
+    switch(rateValue.rating) {
+      case 'critical': prependCard(rateValue); break;
     }
   }
 })
 
 //filter by high rating
-$('#rating-high').on('click',function(){
+$('#rating-high').on('click',function() {
   $("#card-box").html('')
   for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
-    if (rateValue.rating === "high"){
-      prependCard(rateValue)
+    switch(rateValue.rating) {
+      case 'high': prependCard(rateValue); break
     }
   }
 })
 
 //filter by normal rating
-$('#rating-normal').on('click',function(){
+$('#rating-normal').on('click',function() {
   $("#card-box").html('')
   for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
-    if (rateValue.rating === "normal"){
-      prependCard(rateValue)
+    switch(rateValue.rating) {
+      case 'normal': prependCard(rateValue); break
     }
   }
 })
 
 //filter by low rating
-$('#rating-low').on('click',function(){
+$('#rating-low').on('click',function() {
   $("#card-box").html('')
   for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
-    if (rateValue.rating === "low"){
-      prependCard(rateValue)
+    switch(rateValue.rating) {
+      case 'low': prependCard(rateValue); break
     }
   }
 })
 
 //filter by none rating
-$('#rating-none').on('click',function(){
+$('#rating-none').on('click',function() {
   $("#card-box").html('')
   for (var i=0;i<localStorage.length;i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
-    if (rateValue.rating === "none"){
-      prependCard(rateValue)
+    switch(rateValue.rating) {
+      case 'none': prependCard(rateValue); break
     }
   }
 })
@@ -202,16 +202,16 @@ $('#show-completed').on('click', function() {
   if (countEven(count) === true) {
     for (var i = 0; i < localStorage.length; i++) {
       var findComplete = JSON.parse(localStorage.getItem(localStorage.key(i)))
-      if (findComplete.complete === "complete"){
-        prependCard(findComplete)
+      switch(findComplete.complete)  {
+        case 'complete': prependCard(findComplete); break
       }
     }
   } else if (
     countEven(count) === false) {
       for (var i = 0; i < localStorage.length; i++) {
         var findNotComplete = JSON.parse(localStorage.getItem(localStorage.key(i)))
-        if (findNotComplete.complete === "notComplete"){
-          prependCard(findNotComplete)
+        switch (findNotComplete) {
+          case 'notComplete': prependCard(findNotComplete); break
         }
       }
     }
