@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
@@ -9,7 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 35%;
+  height: 300px;
   width: 100%;
   background-color: #E5F3F2;
 }
@@ -18,9 +22,17 @@ body {
   color: #00A79D;
 }
 
-.filter-label {
+#input-field-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  width: 90%;
+}
+
+.filter-label h4{
   width: 50%;
-  margin: 0 auto;
+  margin: 3px auto;
 }
 
 .filter-btns {
@@ -55,6 +67,13 @@ body {
   justify-content: center;
 }
 
+#search {
+  width: 90%;
+  font-size: 24px;
+  letter-spacing: 1px;
+  border: 2px solid #D1D3D4;
+}
+
 .content-width {
   width: 100%;
   margin-top: 20px;
@@ -67,12 +86,7 @@ body {
 .item-card {
   position: relative;
   margin: 0 auto;
-  width: 50%;
-}
-
-#line-1 {
-  display: flex;
-  justify-content: space-between;
+  width: 90%;
 }
 
 .status-btn-box {
@@ -113,26 +127,6 @@ body {
   opacity: .7;
 }
 
-#delete-btn {
-  background-image: url('../images/delete.svg');
-  background-repeat: no-repeat;
-}
-
-#delete-btn:hover {
-  background-image: url('../images/delete-hover.svg');
-}
-
-#delete-btn:focus {
-  outline: none;
-}
-
-#input-field-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: auto;
-  width: 60%;
-}
 
 .item-title {
   height: 32px;
@@ -142,7 +136,7 @@ body {
 
 #item-content {
   font-size: 24px;
-  max-height: 32px;
+  height: 80px;
   letter-spacing: 1px;
   border: 2px solid #D1D3D4;
 }
@@ -160,6 +154,25 @@ h2 {
 
 p {
   margin: 0;
+}
+
+
+#delete-btn {
+  background-image: url('../images/delete.svg');
+  background-repeat: no-repeat;
+}
+
+#delete-btn:hover {
+  background-image: url('../images/delete-hover.svg');
+}
+
+#delete-btn:focus {
+  outline: none;
+}
+
+#line-1 {
+  display: flex;
+  justify-content: space-between;
 }
 
 #line-2 {
@@ -234,50 +247,40 @@ p {
   color: #6D6E71;
 }
 
-#search {
-  font-size: 24px;
-  letter-spacing: 1px;
-  border: 2px solid #D1D3D4;
-}
+
 
 @media screen and (min-width: 600px) {
   #input-field-box {
-    width: 95%;
-  }
-
-  #input-side {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 350px;
-  }
-
-  .content-width {
-    border: solid 1px #D1D3D4;
-    width: 90%;
-    margin-top: 20px;
+    width: 60%;
   }
 
   #item-content {
-    max-height: 80px;
+    height: 32px;
+  }
+
+  #input-side {
+    height: 250px;
   }
 
   h1 {
-    font-size: 70px;
+    font-size: 50px;
   }
 
   .item-card {
     margin:0 auto;
-    width: 50%;
+    width: 60%;
   }
 
   .filter-btns {
-    background-color: yellow;
-    width: 200px;
+    width: 400px;
   }
 
-  .filter-button {
-    width: 50%;
+  .search-container {
+    width: 60%;
+    margin: 0 auto;
   }
 
+  #search {
+    width: 100%;
+  }
 }
