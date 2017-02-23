@@ -46,7 +46,7 @@ function newCardTest(driver) {
   driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
   driver.findElement(By.id('idea-title')).sendKeys('Test Pass One - Title')
   driver.findElement(By.id('idea-content')).sendKeys('Test Pass One - Body')
-  driver.findElement(By.id('save-button')).click()
+  driver.findElement(By.id('save-btn')).click()
 
   driver.sleep(2000).then(function() {
     driver.findElement(By.className('titleEdit')).getText().then(function(titleBody) {
@@ -70,7 +70,7 @@ function newCardTest(driver) {
 }
 
 function upVoteTest(driver) {
-  driver.findElement(By.id('upvote-button')).click()
+  driver.findElement(By.id('upvote-btn')).click()
   driver.sleep(2000).then(function() {
     driver.findElement(By.id('qual')).getText().then(function(quality) {
       if (quality === 'plausible') {
@@ -81,7 +81,7 @@ function upVoteTest(driver) {
     })
   })
 
-  driver.findElement(By.id('upvote-button')).click()
+  driver.findElement(By.id('upvote-btn')).click()
   driver.sleep(2000).then(function() {
     driver.findElement(By.id('qual')).getText().then(function(quality) {
       if (quality === 'genius') {
@@ -94,7 +94,7 @@ function upVoteTest(driver) {
 }
 
 function downVoteTest(driver) {
-  driver.findElement(By.id('downvote-button')).click()
+  driver.findElement(By.id('downvote-btn')).click()
   driver.sleep(2000).then(function() {
     driver.findElement(By.id('qual')).getText().then(function(quality) {
       if (quality === 'plausible') {
@@ -105,7 +105,7 @@ function downVoteTest(driver) {
     })
   })
 
-  driver.findElement(By.id('downvote-button')).click()
+  driver.findElement(By.id('downvote-btn')).click()
   driver.sleep(2000).then(function() {
     driver.findElement(By.id('qual')).getText().then(function(quality) {
       if (quality === 'swill') {
@@ -120,7 +120,7 @@ function downVoteTest(driver) {
 function filterTest(driver) {
   driver.findElement(By.id('idea-title')).sendKeys('Find Me 0123')
   driver.findElement(By.id('idea-content')).sendKeys('3210 eM dniF')
-  driver.findElement(By.id('save-button')).click()
+  driver.findElement(By.id('save-btn')).click()
   driver.findElement(By.id('search')).sendKeys('eM d')
 
   driver.sleep(2000).then(function() {
@@ -138,7 +138,7 @@ function editIdeas(driver){
   driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
   driver.findElement(By.id('idea-title')).sendKeys(' ')
   driver.findElement(By.id('idea-content')).sendKeys('Not quite right content')
-  driver.findElement(By.id('save-button')).click()
+  driver.findElement(By.id('save-btn')).click()
   driver.findElement(By.className('titleEdit')).sendKeys('The perfect title')
 
   driver.sleep(2000).then( function(){
@@ -156,7 +156,7 @@ function createCards(driver) {
   driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
   driver.findElement(By.id('idea-title')).sendKeys('New Title')
   driver.findElement(By.id('idea-content')).sendKeys('New Body')
-  driver.findElement(By.id('save-button')).click()
+  driver.findElement(By.id('save-btn')).click()
 
   driver.sleep(2000).then(function() {
     driver.findElement(By.className('titleEdit')).getText().then(function(title) {
@@ -170,7 +170,7 @@ function createCards(driver) {
 
   driver.findElement(By.id('idea-title')).sendKeys('Second New Title')
   driver.findElement(By.id('idea-content')).sendKeys('Second New Body')
-  driver.findElement(By.id('save-button')).click()
+  driver.findElement(By.id('save-btn')).click()
 
   driver.sleep(2000).then(function() {
     driver.findElement(By.className('titleEdit')).getText().then(function(title) {
@@ -182,7 +182,7 @@ function createCards(driver) {
     })
   })
 
-  driver.findElement(By.id('delete-button')).click()
+  driver.findElement(By.id('delete-btn')).click()
   driver.sleep(2000).then(function(){
     driver.findElement(By.className('titleEdit')).getText().then(function(title) {
       if (title === 'New Title') {
@@ -198,7 +198,7 @@ function refreshTest(driver) {
   driver.get('https://danielbucket.github.io/2DoPivot-Bucket-Kepner/')
   driver.findElement(By.id('idea-title')).sendKeys('First New Idea.')
   driver.findElement(By.id('idea-content')).sendKeys('First New Idea Body.')
-  driver.findElement(By.id('save-button')).click()
+  driver.findElement(By.id('save-btn')).click()
   driver.navigate().refresh()
 
   driver.sleep(3000).then(function() {

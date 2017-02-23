@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
@@ -5,21 +9,39 @@ body {
   width: 100vw;
 }
 
+#input-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+  background-color: #E5F3F2;
+}
+
 #color-title {
   color: #00A79D;
+}
+
+#input-field-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  width: 90%;
+}
+
+.filter-label h4{
+  width: 50%;
+  margin: 3px auto;
 }
 
 .filter-btns {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 40%;
+  width: 70%;
   align-content: space-between;
   margin: 10px auto;
-}
-.filter-label {
-  width: 50%;
-  margin: 0 auto;
 }
 
 .filter-btns button {
@@ -45,21 +67,26 @@ body {
   justify-content: center;
 }
 
-#notComplete {
-  display: none;
+#search {
+  width: 90%;
+  font-size: 24px;
+  letter-spacing: 1px;
+  border: 2px solid #D1D3D4;
 }
 
-#complete {
-  position: absolute;
-  z-index: 1;
+.content-width {
   width: 100%;
-  height: 100%;
-  opacity: .7;
-
+  margin-top: 20px;
 }
 
 #card-box {
   width: 100%;
+}
+
+.item-card {
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
 }
 
 .status-btn-box {
@@ -77,19 +104,6 @@ body {
   margin: 10px 0 0 0;
 }
 
-#delete-btn {
-  background-image: url('../images/delete.svg');
-  background-repeat: no-repeat;
-}
-
-#delete-btn:hover {
-  background-image: url('../images/delete-hover.svg');
-}
-
-#delete-btn:focus {
-  outline: none;
-}
-
 #complete-btn {
   width: 27px;
   background-image: url('../images/success-1.svg');
@@ -101,21 +115,33 @@ body {
   background-repeat: no-repeat;
 }
 
-.item-card {
-  position: relative;
-  margin: 0 auto;
-  width: 90%;
+#notComplete {
+  display: none;
 }
 
-#input-field-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: auto;
-  width: 60%;
+#complete {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: .7;
 }
 
-h1{
+
+.item-title {
+  height: 32px;
+  font-size: 24px;
+  border: 2px solid #D1D3D4;
+}
+
+#item-content {
+  font-size: 24px;
+  height: 80px;
+  letter-spacing: 1px;
+  border: 2px solid #D1D3D4;
+}
+
+h1 {
   margin: 20px 0 0 0;
   font-family: 'Roboto Slab', sans-serif;
   color: #6D6E71;
@@ -126,28 +152,22 @@ h2 {
   color: #6D6E71;
 }
 
-#item-content {
-  font-size: 24px;
-  max-width: 90%;
-  max-height: 80px;
-  min-height: 80px;
-  letter-spacing: 1px;
-  border: 2px solid #D1D3D4;
+p {
+  margin: 0;
 }
 
-.item-title {
-  height: 32px;
-  font-size: 24px;
-  border: 2px solid #D1D3D4;
+
+#delete-btn {
+  background-image: url('../images/delete.svg');
+  background-repeat: no-repeat;
 }
 
-#input-side {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 50%;
-  width: 100%;
-  background-color: #E5F3F2;
+#delete-btn:hover {
+  background-image: url('../images/delete-hover.svg');
+}
+
+#delete-btn:focus {
+  outline: none;
 }
 
 #line-1 {
@@ -170,19 +190,6 @@ h2 {
   border-bottom: 2px solid #D1D3D4;
 }
 
-.content-width {
-  width: 90%;
-  margin-top: 20px;
-}
-
-p {
-  margin: 0;
-}
-
-#rating-line {
-  color: #6D6E71;
-}
-
 #save-btn {
   margin-bottom: 20px;
   font-size: 20px;
@@ -196,12 +203,6 @@ p {
 
 #save-btn:hover {
   background: #045E55;
-}
-
-#search {
-  font-size: 24px;
-  letter-spacing: 1px;
-  border: 2px solid #D1D3D4;
 }
 
 #upvote-btn {
@@ -242,35 +243,44 @@ p {
   outline: none;
 }
 
-@media screen and (max-width: 600px) {
+#rating-line {
+  color: #6D6E71;
+}
+
+
+
+@media screen and (min-width: 600px) {
   #input-field-box {
-    width: 95%;
+    width: 60%;
+  }
+
+  #item-content {
+    height: 32px;
   }
 
   #input-side {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 350px;
-  }
-
-  .content-width {
-    border: solid 1px #D1D3D4;
-    width: 70%;
-    margin-top: 20px;
+    height: 250px;
   }
 
   h1 {
-    font-size: 70px;
+    font-size: 50px;
   }
 
   .item-card {
     margin:0 auto;
-    width: 50%;
+    width: 60%;
   }
 
-  .filter-button {
-    width: 50%;
+  .filter-btns {
+    width: 400px;
   }
 
+  .search-container {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  #search {
+    width: 100%;
+  }
 }
