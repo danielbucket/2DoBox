@@ -1,3 +1,5 @@
+var a = 10
+
 function Idea(id,title,body,rating,complete) {
   this.id = id
   this.title = title
@@ -43,7 +45,7 @@ function prependCard(i) {
 function printCard(a) {
   $('#card-box').html('')
   for (var i=0;i<a;i++) {
-    prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))),a)
+    prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))))
   }
 }
 
@@ -93,7 +95,7 @@ $('#card-box').on('click', '#upvote-btn', function() {
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.rating = ratingText.text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
-  printCard(5)
+  printCard(a)
 })
 
 //down vote button
@@ -110,7 +112,7 @@ $('#card-box').on('click', '#downvote-btn', function() {
   thisCard.rating = ratingText.text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
   // rateCount()
-  printCard(5)
+  printCard(a)
 })
 
 //task complete button
@@ -121,13 +123,13 @@ $('#card-box').on('click', '#complete-btn', function() {
     case 'complete': thisCard.complete = 'notComplete'; break
   }
   localStorage.setItem(thisCard.id,JSON.stringify(thisCard))
-  printCard(5)
+  printCard(a)
 })
 
 //delete button
 $('#card-box').on('click', '#delete-btn', function() {
   localStorage.removeItem($(this).closest('.item-card').attr('id'))
-  printCard(5)
+  printCard(a)
 })
 
 //content editable title
@@ -214,7 +216,7 @@ $('#rating-none').on('click',function(){
 
 //clear filters
 $('#rating-clear').on('click', function() {
-  printCard(5)
+  printCard(a)
 })
 
 //filter by Show Completed
@@ -243,10 +245,9 @@ $('#item-title, #item-content').on('keyup', function() {
 })
 
 //show more
-var a = 5
 $('#show-more').on('click', function() {
   a = a+=5
   printCard(a)
 })
 
-printCard(5)
+printCard(a)
