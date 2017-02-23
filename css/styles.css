@@ -42,6 +42,7 @@ body {
   width: 70%;
   align-content: space-between;
   margin: 10px auto;
+  /*box-shadow: 1px 1px 1px 0px #00a79d;*/
 }
 
 .filter-btns button {
@@ -69,7 +70,15 @@ body {
 
 #show-completed,
 #show-more-todo {
-    width: 150px;
+  width: 150px;
+}
+
+.show-more span {
+  margin-left: 3px;
+}
+
+.show-more:hover {
+  background-color: #6D6E71;
 }
 
 #search {
@@ -192,8 +201,7 @@ p {
   justify-content: flex-start;
   align-items: center;
   padding-bottom: 10px;
-  border-bottom: 2px solid #D1D3D4;
-}
+box-shadow: 0px 3px 3px -2px #d1d3d4;}
 
 #save-btn {
   margin-bottom: 20px;
@@ -252,6 +260,29 @@ p {
   color: #6D6E71;
 }
 
+#rating-line span {
+  margin-left: 3px;
+}
+
+.none {
+  box-shadow: 0 3px 3px -3px #9e9e9e;
+}
+
+.low {
+  box-shadow: 0 3px 3px -3px #cddc39;
+}
+
+.normal {
+  box-shadow: 0 3px 3px -3px #009688;
+}
+
+.high {
+  box-shadow: 0 3px 3px -3px #ff9800;
+}
+
+.critical {
+  box-shadow: 0 3px 3px -3px #e01506;
+}
 
 
 @media screen and (min-width: 600px) {

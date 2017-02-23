@@ -6,6 +6,14 @@ function Idea(id,title,body,rating,complete) {
   this.complete = complete
 }
 
+// function RateCounter(critical,high,normal,low,none) {
+//   this.critical = critical
+//   this.high = high
+//   this.normal = normal
+//   this.low = low
+//   this.none = none
+// }
+
 function prependCard(i) {
   $('#card-box').prepend(
     `<article class='item-card ${i.complete}' id="${i.id}">
@@ -25,7 +33,7 @@ function prependCard(i) {
         <section id='line-3'>
           <button id='upvote-btn'></button>
           <button id='downvote-btn'></button>
-          <p id='rating-line'>importance:<span id="rate">${i.rating}</span></p>
+          <p id='rating-line'>importance:<span class="${i.rating}" id="rate">${i.rating}</span></p>
         </section>
       </img>
     </article>`
@@ -35,9 +43,28 @@ function prependCard(i) {
 function printCard(a) {
   $('#card-box').html('')
   for (var i=0;i<a;i++) {
-    prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))))
+    prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))),a)
   }
 }
+
+// function rateCount() {
+//   var getRating = JSON.parse(localStorage.getItem('r8'))
+//   for (var i=0;i<getRating.length;i++) {
+//
+//   }
+//
+//   var ratingCount = new RateCounter(critical,high,normal,low,none)
+//   localStorage.setItem('r8',JSON.stringify(ratingCount))
+// }
+
+// function displayRatingCounter() {
+//   var grabRate = localStorage.getItem(JSON.parse(r8))
+//   $('rating-critical span').html(getRating.critical)
+//   $('rating-high').html(getRating.high)
+//   $('rating-normal').html(getRating.normal)
+//   $('rating-low').html(getRating.low)
+//   $('rating-low').html(getRating.none)
+// }
 
 //save button
 $('#save-btn').on('click', function() {
@@ -57,15 +84,16 @@ $('#save-btn').on('click', function() {
 $('#card-box').on('click', '#upvote-btn', function() {
   var ratingText = $(this).siblings('#rating-line').children()
     switch(ratingText.text()) {
-      case 'critical': ratingText.text('critical'); break;
-      case 'high': ratingText.text('critical'); break;
-      case 'normal': ratingText.text('high'); break;
-      case 'low': ratingText.text('normal'); break;
-      case 'none': ratingText.text('low'); break;
+      case 'critical': ratingText.text('critical'); break
+      case 'high': ratingText.text('critical'); break
+      case 'normal': ratingText.text('high'); break
+      case 'low': ratingText.text('normal'); break
+      case 'none': ratingText.text('low'); break
     }
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.rating = ratingText.text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
+  printCard(5)
 })
 
 //down vote button
@@ -81,14 +109,16 @@ $('#card-box').on('click', '#downvote-btn', function() {
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   thisCard.rating = ratingText.text()
   localStorage.setItem(thisCard.id, JSON.stringify(thisCard))
+  // rateCount()
+  printCard(5)
 })
 
 //task complete button
 $('#card-box').on('click', '#complete-btn', function() {
   var thisCard = JSON.parse(localStorage.getItem($(this).closest('.item-card').attr('id')))
   switch(thisCard.complete) {
-    case 'notComplete': thisCard.complete = 'complete'; break;
-    case 'complete': thisCard.complete = 'notComplete'; break;
+    case 'notComplete': thisCard.complete = 'complete'; break
+    case 'complete': thisCard.complete = 'notComplete'; break
   }
   localStorage.setItem(thisCard.id,JSON.stringify(thisCard))
   printCard(5)
@@ -198,6 +228,7 @@ $('#item-title, #item-content').on('keyup', function() {
   }
 })
 
+//show more
 var a = 5
 $('#show-more').on('click', function() {
   a = a+=5
