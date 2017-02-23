@@ -219,18 +219,30 @@ $('#rating-clear').on('click', function() {
   printCard(a)
 })
 
-//filter by Show Completed
-function sortByCompleted() {
-  $("#card-box").html('')
-  for (var i = 0; i < localStorage.length; i++) {
-    var showComplete = JSON.parse(localStorage.getItem(localStorage.key(i)))
-    if (showComplete.complete === "complete"){
-      prependCard(showComplete)
-    }
+//toggle complete cards
+var count = 0
+$('#show-completed').on('click', function() {
+  $('#card-box').html('')
+  count++
+  var countEven = function(count) {
+    return (count % 2 === 0) ? true : false;
   }
-}
-$('#show-completed').on('click',function(){
-  sortByCompleted()
+  if (countEven(count) === true) {
+    for (var i = 0; i < localStorage.length; i++) {
+      var findComplete = JSON.parse(localStorage.getItem(localStorage.key(i)))
+      if (findComplete.complete === "complete"){
+        prependCard(findComplete)
+      }
+    }
+  } else if (
+    countEven(count) === false) {
+      for (var i = 0; i < localStorage.length; i++) {
+        var findNotComplete = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        if (findNotComplete.complete === "notComplete"){
+          prependCard(findNotComplete)
+        }
+      }
+    }
 })
 
 //disable button function
