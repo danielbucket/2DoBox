@@ -32,10 +32,10 @@ function prependCard(i) {
   )
 }
 
-function printCard() {
+function printCard(a) {
   $('#card-box').html('')
-  for (var i=0;i<localStorage.length;i++) {
-    prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))))
+  for (var i=0;i<a;i++) {
+      prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))))
   }
 }
 
@@ -204,7 +204,7 @@ $('#rating-none').on('click',function(){
 
 //clear filters
 $('#rating-clear').on('click', function() {
-  printCard()
+  printCard(localStorage.length)
 })
 
 //disable button function
@@ -218,4 +218,4 @@ $('#item-title, #item-content').on('keyup', function() {
   }
 })
 
-printCard()
+printCard(5)
