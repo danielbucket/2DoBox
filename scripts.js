@@ -1,4 +1,4 @@
-function Idea(id, title, body, rating, complete) {
+function Idea(id,title,body,rating,complete) {
   this.id = id
   this.title = title
   this.body = body
@@ -32,9 +32,9 @@ function prependCard(i) {
   )
 }
 
-function printCard() {
+function printCard(a) {
   $('#card-box').html('')
-  for (var i=0;i<localStorage.length;i++) {
+  for (var i=0;i<a;i++) {
     prependCard(JSON.parse(localStorage.getItem(localStorage.key(i))))
   }
 }
@@ -50,7 +50,7 @@ $('#save-btn').on('click', function() {
   localStorage.setItem(id, JSON.stringify(newItem))
   $('#item-title').val('')
   $('#item-content').val('')
-  printCard()
+  printCard(localStorage.length)
 })
 
 //up vote button
@@ -133,11 +133,10 @@ function sortByCritical() {
   for (var i = 0; i < localStorage.length; i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "critical"){
-      prependCard(rateValue);
+      prependCard(rateValue)
     }
   }
 }
-
 $('#rating-critical').on('click',function(){
   sortByCritical()
 })
@@ -148,11 +147,10 @@ function sortByHigh() {
   for (var i = 0; i < localStorage.length; i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "high"){
-      prependCard(rateValue);
+      prependCard(rateValue)
     }
   }
 }
-
 $('#rating-high').on('click',function(){
   sortByHigh()
 })
@@ -163,11 +161,10 @@ function sortByNormal() {
   for (var i = 0; i < localStorage.length; i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "normal"){
-      prependCard(rateValue);
+      prependCard(rateValue)
     }
   }
 }
-
 $('#rating-normal').on('click',function(){
   sortByNormal()
 })
@@ -178,11 +175,10 @@ function sortByLow() {
   for (var i = 0; i < localStorage.length; i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "low"){
-      prependCard(rateValue);
+      prependCard(rateValue)
     }
   }
 }
-
 $('#rating-low').on('click',function(){
   sortByLow()
 })
@@ -193,18 +189,16 @@ function sortByNone() {
   for (var i = 0; i < localStorage.length; i++) {
     var rateValue = JSON.parse(localStorage.getItem(localStorage.key(i)))
     if (rateValue.rating === "none"){
-      prependCard(rateValue);
+      prependCard(rateValue)
     }
-  }
-}
-
+}}
 $('#rating-none').on('click',function(){
   sortByNone()
 })
 
 //clear filters
 $('#rating-clear').on('click', function() {
-  printCard()
+  printCard(localStorage.length)
 })
 
 //disable button function
@@ -218,4 +212,10 @@ $('#item-title, #item-content').on('keyup', function() {
   }
 })
 
-printCard()
+var a = 5
+$('#show-more').on('click', function() {
+  a = a+=5
+  printCard(a)
+})
+
+printCard(5)
