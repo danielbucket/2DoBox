@@ -67,6 +67,11 @@ body {
   justify-content: center;
 }
 
+#show-completed,
+#show-more-todo {
+    width: 150px;
+}
+
 #search {
   width: 90%;
   font-size: 24px;
